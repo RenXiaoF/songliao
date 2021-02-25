@@ -1,0 +1,10 @@
+<!-- 微信授权 -->
+<!-- <text>pages/userAuth/index.wxml</text> -->
+<view class="auth-v">
+    <view class="auth-v-t">亲，为了更好的为您服务</view>
+    <view>请授权我们获取您的公开信息(昵称，头像等)</view>
+</view>
+<button class="auth-bt" wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+    确认授权
+</button>
+<view wx:else>请升级微信版本</view>

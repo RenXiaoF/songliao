@@ -1,0 +1,27 @@
+<!-- 迁移  依链云  的 用户注册 -->
+<!-- <text>pages/yly_user_zhc/yly_user_zhc.wxml</text> -->
+<form bindsubmit="submitForm" wx:if="{{!isRegister}}">
+    <view class="container">
+        <!-- 手机号 -->
+        <view class="label-input ">
+            <text class="label">+86</text>
+            <input class="input" maxlength="11"  placeholder="请输入手机号" type="number" name="username" bindinput="setMobile" />
+        </view>
+        <!-- 验证码 -->
+        <view class="verify-box">
+            <input class="verify-input" placeholder="验证码" name="code" type="number" />
+            <view wx:if="{{snsMsgWait == 60}}" class="verify-btn" bindtap="getCode" disabled="{{smsFlag}}">{{sendTime}}</view>
+            <view wx:if="{{snsMsgWait < 60}}" class="verify-btn1"  disabled="{{smsFlag}}">{{sendTime}}</view>
+        </view>
+        <!-- 注册并登陆 -->
+        <button style="width:644rpx" class="login-btn" formType="submit" bindsubmit="submitForm">
+            注  册
+        </button>
+        <!-- 协议 -->
+    </view>
+</form>
+<view class="content" wx:if="{{isRegister}}">
+    <view class="content_yzhc">您已注册!</view>
+    <button style="width:644rpx"   class="login_btn1" formType="submit" bindtap="redoSignup"> 重 新 注 册 </button>
+    <button style="width:644rpx"   class="login_btn2" formType="submit" bindtap="goHome"> 返 回 </button>
+</view>

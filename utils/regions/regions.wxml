@@ -1,0 +1,10 @@
+<template name="regions">
+    <!-- 选择地址弹框  -->
+    <view hidden="{{!regions.showRegionsModal}}">
+        <view class="cover-layer" bindtap="closeRegionsModal"></view>
+        <view class="regions">
+            <view class="region" wx:for="{{regions.regions}}" wx:key="{{index}}" data-id="{{item.id}}" 
+                data-name="{{item.name}}" bindtap="openRegionsModal">{{item.name}}</view>
+        </view>
+    </view>
+</template>

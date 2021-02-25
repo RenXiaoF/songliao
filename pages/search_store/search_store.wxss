@@ -1,0 +1,36 @@
+.radio-group {
+  border-bottom: 1px solid #ddd;
+}
+.radio {
+  display: block;
+  border-top: 1px solid #ddd;
+  padding: 5px;
+}
+.spec-cart-btnsB {
+  position: absolute;
+  top: 87vh;
+  left: 5vw;
+  float: left;
+  width: 100%;
+  line-height: 80rpx;
+}
+.spec-cart-btn1B {
+  float: left;
+  background-color: #02a7f0;
+  width: 251rpx;
+  font-size: 30rpx;
+  text-align: center;
+  color: white;
+  border-radius: 2em;
+  margin-right: 10vw;
+  margin-left: 6vw;
+}
+.spec-cart-btn2B {
+  float: left;
+  background-color: #02a7f0;
+  width: 251rpx;
+  font-size: 30rpx;
+  text-align: center;
+  color: white;
+  border-radius: 2em;
+}

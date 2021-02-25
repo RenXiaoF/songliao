@@ -1,0 +1,107 @@
+<!-- 个人信息 -->
+<!-- <text>pages/single_user_list/single_user_list.wxml</text> -->
+<view class="content">
+    <!-- 内容 -->
+    <view class="push_content">
+        <view class="push_text">
+            <view class="text">
+                <text class="">所属企业</text>
+                <text class="xinghao">*</text>
+                <text class="">:</text>
+                <text class="fhvalue">{{storeinfo.store_name?storeinfo.store_name:'无'}}</text>
+                <image class="bianji" bindtap='gotosearh_store' src="../../images/bianji.png" />
+            </view>
+            <view class="text">
+                <text class="">所属部门:</text>
+                <text class="fhvalue">{{group.name?group.name:'无'}}</text>
+                <image bindtap="group_modalinput" class="bianji" src="../../images/bianji.png" />
+            </view>
+            <view class="text">
+                <text class="">纳税人识别码:</text>
+                <text class="fhvalue">{{storeinfo.taxpayerid}}</text>
+            </view>
+            <view class="text">
+                <text class="">用户姓名</text>
+                <text class="xinghao">*</text>
+                <text class="">:</text>
+                <text class="fhvalue">{{realname?realname:'无'}}</text>
+                <image bindtap="realname_modalinput" class="bianji" src="../../images/bianji.png" />
+            </view>
+            <view class="text">
+                <text class="">会员角色:</text>
+                <text class="fhvalue">{{user_role_name}}</text>
+            </view>
+            <view class="text">
+                <text class="">手机号码</text>
+                <text class="xinghao">*</text>
+                <text class="">:</text>
+                <text class="fhvalue">{{mobile?mobile:'无'}}</text>
+                <image bindtap="mobile_modalinput" class="bianji" src="../../images/bianji.png" />
+            </view>
+            <view class="text">
+                <text class="">修改密码:</text>
+                <text class="fhvalue">******</text>
+                <image bindtap="password_modalinput" class="bianji" src="../../images/bianji.png" />
+            </view>
+            <view class="text">
+                <text class="">修改打印配置</text>
+                <text class="xinghao">*</text>
+                <text class="">:</text>
+                <text class="fhvalue">{{printer_sn}}</text>
+                <image bindtap="print_modalinput" class="bianji" src="../../images/bianji.png" />
+            </view>
+        </view>
+    </view>
+    <!-- 安全退出 -->
+    <view class="no-data" bindtap="clearAuth">
+        <navigator url="/pages/logs/logs" class="lookat" open-type="switchTab">安全退出</navigator>
+    </view>
+    <view class="content_button" bindtap="goBack">返回</view>
+    <!-- 用户名称修改 -->
+    <modal hidden="{{realname_hiddenmodalput}}" title="修改姓名" confirm-text="确定" cancel-text="取消" bindcancel="realname_cancel" bindconfirm="realname_confirm">
+        <input type='text' class="modal-box-input border" bindfocus="bindFous" placeholder="请填写用户名" value="{{realname}}" bindinput="setRealname" auto-focus />
+    </modal>
+    <!-- 用户名称修改 -->
+    <!-- 密码修改 -->
+    <modal hidden="{{password_hiddenmodalput}}" title="修改密码" confirm-text="确定" cancel-text="取消" bindcancel="password_cancel" bindconfirm="password_confirm">
+        <input type='text' password class="modal-box-input border" bindfocus="bindFous" placeholder="新密码" bindinput="setPassword" auto-focus />
+        <input type='text' password class="modal-box-input border" placeholder="确认密码" bindfocus="bindFous" bindinput="setConfirm_password" auto-focus />
+    </modal>
+    <!-- 密码修改 -->
+    <!-- 打印机信息修改 -->
+    <modal hidden="{{print_hiddenmodalput}}" title="修改打印机配置" confirm-text="确定" cancel-text="取消" bindcancel="print_cancel" bindconfirm="print_confirm">
+        <view class="modal-box-title" style="padding:30rpx 0">请依次填写打印机账号,打印机密钥,打印机编号</view>
+        <input type='text' value="{{printer_user}}" class="modal-box-input border" bindfocus="bindFous" placeholder="打印机账号" bindinput="setPrinteruser" auto-focus />
+        <input type='text' value="{{printer_ukey}}" class="modal-box-input border" placeholder="打印机密钥" bindfocus="bindFous" bindinput="setPrinterukey" auto-focus />
+        <input type='text' value="{{printer_sn}}" class="modal-box-input border" placeholder="打印机编号" bindfocus="bindFous" bindinput="setPrintersn" auto-focus />
+    </modal>
+    <!-- 打印机信息修改 -->
+    <!-- 部门列表 -->
+    <modal hidden="{{group_hiddenmodalput}}" title="修改所属部门" confirm-text="确定" cancel-text="取消" bindcancel="group_cancel" bindconfirm="group_confirm">
+        <view class="page__bd">
+            <view class="section section_gap">
+                <radio-group class="radio-group" bindchange="setGroup">
+                    <radio class="radio" wx:for-items="{{groupradio}}" wx:key="group_id" value="{{item.group_id}}" checked="{{item.checked}}">
+                        <text>{{item.group_name}}</text>
+                    </radio>
+                </radio-group>
+            </view>
+        </view>
+    </modal>
+    <!-- 部门列表 -->
+    <!-- 手机号修改 -->
+    <modal hidden="{{mobile_hiddenmodalput}}" title="修改手机号" confirm-text="确定" cancel-text="取消" bindcancel="mobile_cancel" bindconfirm="mobile_confirm">
+        <!-- 手机号 -->
+        <input class="input" class=".modal-box-input border" placeholder="请输入手机号" type="number" bindinput="setMobile" maxlength="11" value="{{temp_mobile}}" />
+        <!-- 验证码 -->
+        <view class="verify-box">
+            <view style="width:46%;margin-left:.5vw">
+                <input class="verify-input" class="modal-box-input2 border" value="{{temp_code}}" placeholder="验证码" type="number" bindinput="setCode" maxlength="6" />
+            </view>
+            <view class="verify-btn" style="width:45.5%" bindtap="getCode" disabled="{{smsFlag}}">
+                {{sendTime}}
+            </view>
+        </view>
+    </modal>
+    <!-- 手机号修改 -->
+</view>

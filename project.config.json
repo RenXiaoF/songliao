@@ -1,0 +1,185 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"compileHotReLoad": false,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"useIsolateContext": true,
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.10.4",
+	"appid": "wxbaee9e10cff4e6e1",
+	"projectname": "songliao",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "首页",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": 1013
+				},
+				{
+					"id": -1,
+					"name": "pages/push-msg/push-msg",
+					"pathName": "pages/push-msg/push-msg",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/order-list/order-list",
+					"pathName": "pages/order-list/order-list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/order-detail/order-detail",
+					"pathName": "pages/order-detail/order-detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/payof-list/payof-list",
+					"pathName": "pages/payof-list/payof-list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/logins/register/register",
+					"pathName": "pages/logins/register/register",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "poid=PO2004-0014",
+					"scene": 1043,
+					"referrerInfo": {}
+				},
+				{
+					"id": -1,
+					"name": "pages/userAuth/index",
+					"pathName": "pages/userAuth/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/logins/userinfo/userinfo",
+					"pathName": "pages/logins/userinfo/userinfo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/push-msg/push-msg",
+					"pathName": "pages/push-msg/push-msg",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/logins/login/login",
+					"pathName": "pages/logins/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/logs/logs",
+					"pathName": "pages/logs/logs",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/searchbox/searchbox",
+					"pathName": "pages/searchbox/searchbox",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/single_user_list/single_user_list",
+					"pathName": "pages/single_user_list/single_user_list",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/telcode_register/telcode_register",
+					"pathName": "pages/telcode_register/telcode_register",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "invite_user_id=141773",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/pushed_new_order/pushed_new_order",
+					"pathName": "pages/pushed_new_order/pushed_new_order",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

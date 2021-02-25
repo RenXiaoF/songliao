@@ -1,0 +1,25 @@
+<!-- p注册 -->
+<!-- <text>pages/telcode_register/telcode_register.wxml</text> -->
+<form bindsubmit="submitForm">
+    <view class="container">
+        <!-- 手机号 -->
+        <view class="label-input ">
+            <text class="label">+86</text>
+            <input class="input" placeholder="请输入手机号" type="number" name="username" bindinput="setMobile" />
+        </view>
+        <!-- 验证码 -->
+        <view class="verify-box">
+            <input class="verify-input" placeholder="验证码" name="code" type="text" />
+            <view wx:if="{{snsMsgWait == 60}}" class="verify-btn" bindtap="getCode" disabled="{{smsFlag}}">{{sendTime}}</view>
+            <view wx:if="{{snsMsgWait < 60}}" class="verify-btn1"  disabled="{{smsFlag}}">{{sendTime}}</view>
+        </view>
+        <!-- 注册并登陆 -->
+        <button style="width:644rpx" class="login-btn" formType="submit" bindsubmit="submitForm">
+            登录
+        </button>
+        <!-- 协议 -->
+        <view class="hetong" bindtap="goTelPassword">
+            <text style="color:#3880FF">账号密码登陆</text>
+        </view>
+    </view>
+</form>

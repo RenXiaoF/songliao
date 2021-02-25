@@ -1,0 +1,96 @@
+<!-- new -->
+<view class="container">
+  <!-- 头部单号，数量统计 -->
+  <view class="title">
+    <text>采购单号：{{poid}}</text>
+    <view class="title_right">
+      <text>共{{payofList.length}}条</text>
+      <checkbox bindtap="selectAll" checked="{{selected_all}}"/>
+    </view>
+  </view>
+  <!-- 中间内容列表 -->
+  <view class="materiel_list">
+    <!-- 列表项 -->
+    <view class="materiel_item" wx:for="{{payofList}}" wx:key="idx" wx:for-item="pol" wx:for-index="polIndex">
+      <view class="materiel_img"><image src="{{pol.picture?pol.picture:defaultImage}}" /></view>
+      <view class="materiel_desc">
+        <text class="blue_text">物料名称：{{pol.name}}</text>
+        <text>物料编号：{{pol.poid}}</text>
+        <text>需方色号/颜色：{{pol.colorid ?pol.colorid:'无'}}/{{pol.color ?pol.color:'无'}}</text>
+        <text>供方色号/颜色：{{pol.provcolorid ?pol.provcolorid:'无' }}/{{pol.ProvColor?pol.ProvColor:'无'}}</text>
+        <text>规格：{{pol.model}}</text>
+        <!-- <text>数量：<text class="red_text">{{pol.multqty}}</text></text> -->
+        <text>数量：<text class="red_text">{{payofListmultqty ? payofListmultqty : 0}}</text></text>
+      </view>
+      <view class="materiel_editBox">
+        <checkbox bindtap="selectPol" data-index="{{polIndex}}" checked="{{pol.isChecked}}"/> 
+      </view>
+      <view class="changeNum" bindtap="openSpecModel" data-index="{{polIndex}}" data-sld="{{pol}}">
+        <text>修改数量</text>
+        <text class="arrow"></text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 修改数量 -->
+  <view hidden="{{!openSpecModal}}">
+      <view class="cover-layer" bindtap="closeSpecModalA"></view>
+      <view class="spec-model" animation="{{animationData}}">
+          <icon type="cancel" color="gray" size="22" class="modal-close" bindtap="closeSpecModalA" />
+          <view class="spec-name">请填写送料数</view>
+          <text class="tankuang_y" wx:if="{{getOneSLInfo.length>0}}">(累计已送:共{{TCount}}{{multunit && multunit != 'undefined' ? multunit : ''}},{{getOneSLInfo.length}}卷,最后的卷号:{{lastNum}})</text>
+          <view class="count">
+              <view>批次:</view>
+              <input type="text" value="{{batchno}}" bindblur="inputCartNum" />
+          </view>
+          <!-- 是否分卷 -->
+          <view class="is_fenjuan">
+              <view>
+                  <view class="">是否分卷:</view>
+                  <switch type="switch" checked="{{switchChecked}}" bindchange="switchChange"/>
+              </view>
+              <view>
+                <view>卷数：</view>
+                <view style="width:20%;border:1rpx solid #ccc;border-radius: 0.5em;" class="{{!switchChecked?'isSwitchChecked':''}}" >
+                  <input type="number" bindinput="bindKeyInput" disabled="{{!switchChecked}}" value="{{inputValue}}" />
+                </view>
+              </view>
+          </view>
+          <!-- 卷号_new -->
+          <view class="juanhao_new">
+            <block wx:for="{{payOffInfo.list}}" wx:key="*this"  wx:for-index="listIndex">
+              <view class="juanhao_new_item">
+                <view class="juanhao_new_item_left">
+                  <view class="">卷号:</view>
+                  <view style="width:40%">
+                    <input type="number" bindblur="inputNum" data-index="{{listIndex}}" value="{{item.num}}"/>
+                  </view>
+                </view>
+                <view class="juanhao_new_item_right">
+                  <view>送料数：</view>
+                  <view style="width:40%;">
+                    <input type="digit" value="{{item.count}}" bindblur="inputCount" data-index="{{listIndex}}"/>
+                  </view>
+                  <text class="add" bindtap="addCartNum" data-index="{{listIndex}}">+</text>
+                  <text class="sub" bindtap="subCartNum" data-index="{{listIndex}}">-</text>
+                </view>
+              </view>
+            </block>
+          </view>
+
+          <view class="spec-cart-btns">
+              <view class="spec-cart-btn1 " data-action='confirm' bindtap="closeSpecModal">加入送料列表</view>
+              <view class="spec-cart-btn2 " data-action='cancel' bindtap="closeSpecModal">打印标签</view>
+          </view>
+      </view>
+  </view>
+
+
+  <!-- 底部按钮 -->
+  <view class="bottom_button">
+    <button class="ross_primary1" bindtap="printOrder">打印送料明细</button>
+    <!-- <button class="ross_primary2" bindtap="openConfirm">确认送料</button> -->
+    <button class="ross_warn" bindtap="deleteOneOrder">移出列表</button>
+  </view>
+
+</view>

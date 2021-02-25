@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "微信授权登录",
+  "navigationBarTextStyle": "white",
+  "navigationBarBackgroundColor": "#1c9cff",
+  "enablePullDownRefresh": false
+}

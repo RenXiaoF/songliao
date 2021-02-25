@@ -1,0 +1,33 @@
+<view class="content">
+    <!-- 搜索框 -->
+     <view>
+            <view class="weui-search-bar">
+                <view class="weui-search-bar__form">
+                <!-- 最初始时的搜索框 -->
+                    <view class="weui-search-bar__box">
+                        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                        <input value="{{inputValue}}" bindinput='inputBind' type="text" class="weui-search-bar__input" placeholder="请输入企业名称/纳税人识别码/手机号"/>
+                    </view>
+                    <!-- 可编辑时的搜索框 -->
+                    <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                        <icon class="weui-icon-search" type="search" size="14"></icon>
+                        <view class="weui-search-bar__text">请输入企业名称/纳税人识别码/手机号</view>
+                    </label>
+                </view>
+                <!-- 取消搜索 -->
+                <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+            </view>
+        </view>
+    <view class="om_content" wx:for="{{user_list}}" wx:for-index="idx" wx:for-item="item" wx:key="key">
+        <view  wx:for="{{item.list}}" wx:for-index="icx" wx:for-item="list"  wx:key="key2">
+            <view class="om_content_list" bindtap="go_info" data-param="{{list}}">
+            <text class=""> {{list.store_name}}</text>
+            <text class="" wx:if="{{list.taxpayerid}}"> ({{list.taxpayerid}})</text>
+            <text class="" wx:if="{{list.taxpayerid == ''}}"> (无)</text>
+            </view>
+        </view>
+    </view>
+    <view class="om_content_count">
+        共{{count}}个企业
+    </view>
+</view>

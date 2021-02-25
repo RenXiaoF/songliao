@@ -1,0 +1,58 @@
+/**app.wxss**/
+/* .container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}  */
+.arrow{
+ 
+width: 10px;
+ 
+height: 10px;
+ 
+border-top: 2px solid #0486f4;
+ 
+border-right: 2px solid #0486f4;
+ 
+position: absolute;
+ 
+right: 20rpx;
+ 
+transform: rotate(45deg);
+ 
+margin-top:10rpx;
+}
+.blue_text{
+  color:#1d9dfe;
+}
+.red_text{
+  color:#e45991;
+}
+.ross_primary1{
+  background-color: #1c9cff !important;
+  color:white;
+}
+.ross_primary1:hover{
+  background-color: black !important;
+  opacity: 0.8 !important;
+}
+.ross_primary2{
+  background-color: #3171e0 !important;
+  color:white;
+}
+.ross_primary2:hover{
+  background-color: black !important;
+  opacity: 0.8 !important;
+}
+.ross_warn{
+  background-color: #ffca22 !important;
+  color:white;
+}
+.ross_warn:hover{
+  background-color: black !important;
+  opacity: 0.8 !important;
+}

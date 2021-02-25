@@ -1,0 +1,10 @@
+<view class="container">
+    <!-- <image class="bc" src="{{img}}" bindlongpress="saveImg" height="80%" width="80%"/> -->
+    <image class="bc" src="{{img}}" bindlongpress="SaveImg" height="80%" width="80%"/>
+    <view class="content">
+        <view class="one" wx:if="{{statac == 0 }}">
+            <view class="button" bindtap="get_my_qrcode">重新获取二维码</view>
+        </view>
+    </view>
+
+</view>

@@ -1,0 +1,283 @@
+<!-- 订单详情 -->
+<!-- <text>pages/order_management_detail/order_management_detail.wxml</text> -->
+<view class="content">
+    <!-- 单号 -->
+    <view class="company_name">
+        <text class="company_t">采购单号：{{Matioid}}</text>
+        <!-- <image class="pakj" src="../../images/pakj.png" /> -->
+        <text class="">共{{listLength}}条</text>
+        <!-- <text class="">共{{songliaoDetail.length}}条</text> -->
+    </view>
+    <!-- 物料详情  待接单 -->
+    <view class="content" wx:if="{{type  == '已审核' || type  == '待接单'}}">
+        <view class="mater_content" wx:for="{{songliaoDetail}}" wx:key="idx" wx:for-item="sld" wx:for-index="slIndex">
+            <view class="mater_content_top">
+                <view class="mater_content_top_info">
+                    <text class="mct_info_title" wx:if="{{sld.code || sld.name}}">
+                        <text>{{sld.code}}</text>
+                        <text wx:if="{{sld.name}}">（{{sld.name}}）</text>
+                    </text>
+                    <text class="mct_info_title" wx:else>物料编号</text>
+                    <!-- <text>下单时间：{{sld.deliverdate}}</text> -->
+                    <text>下单时间：{{sld.confirmdate ? sld.confirmdate : ''}}</text>
+                    <view class="mbyq">
+                        <text class="mbjq">要求货期：{{sld.Deliverdate ? sld.Deliverdate : ''}}</text>
+
+                        <picker mode="date" value="{{date}}" bindchange="changeDate" class="tui-picker-detail" data-index="{{slIndex}}">
+
+                           预计交期*：{{sld.FQDeliverdate?sld.FQDeliverdate: '请选择 >'}}
+                        </picker>
+                    </view>
+                    <view>
+                        <text class="wenzi">需方色号/颜色：</text>
+                        <text>{{sld.colorid ? sld.colorid : ''}}/{{sld.color ? sld.color : ''}}</text>
+                    </view>
+                    <view>
+                        <text class="wenzi">供方色号/颜色：</text>
+                        <text>{{sld.ProvColorID ? sld.ProvColorID : ''}}/{{sld.ProvColor ? sld.ProvColor : ''}} </text>
+                    </view>
+                    <view>
+                        <text class="wenzi">规格：</text>
+                        <text>{{sld.model ? sld.model : ''}}</text>
+                    </view>
+                    <view>
+                        <text class="wenzi">克重：</text>
+                        <text>{{sld.FGWeight ? sld.FGWeight : ''}} </text>
+                    </view>
+                    <view>
+                        <text class="wenzi">数量：</text>
+                        <text>{{sld.multqty ? sld.multqty : 0}} </text>
+                        <text>{{sld.multunit ? sld.multunit : ''}} </text>
+                    </view>
+                    <view>
+                        <text class="wenzi">单价</text>
+                        <text class="danwei">(元)：</text>
+                        <text class="mbjq">{{sld.multprice ? sld.multprice : 0}}</text>
+                    </view>
+                    <view>
+                        <text class="wenzi">金额</text>
+                        <text class="danwei">(元)：</text>
+                        <text class="mbjq">{{sld.multtotal ? sld.multtotal : 0}}</text>
+                    </view>
+                    <view>
+                        <text class="wenzi">款号：</text>
+                        <text style="word-break: break-all;">{{sld.bb ? sld.bb : ''}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="mater_content_bottom">
+                <view class="mater_content_bottom_remarks" bindtap="openBModel" data-index="{{slIndex}}">
+                    <text class="wenzi">备注：</text>
+                    <text>{{des ? des : (sld.des ? sld.des : '')}}</text>
+                    <text class="arrow"></text>
+                </view>
+                <image class="push_avada" src="{{sld.picture ? sld.picture : defaultImage}}" />
+                <text class="wenzi" wx:if="{{images.length < 2}}">上传图片附件，限定2张</text>
+                  <!-- 例子  显示图片  开始 -->
+                <view class="question-images">
+                    <view wx:for="{{images}}" wx:key="*this">
+                        <view class="q-image-wrap">
+                            <!-- 图片缩略图 -->
+                            <image class="q-image" src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview"></image>
+                            <!-- 移除图片的按钮 -->
+                            <view class="q-image-remover" data-idx="{{index}}" bindtap="removeImage">
+                                删除
+                            </view>
+                        </view>
+                    </view>
+                    <!-- 添加图片 -->
+                    <view style="margin-top: -24rpx;">
+                        <image class="push_addpic" wx:if="{{images.length < 2}}" bindtap="chooseImage" src="../../images/qdn/addPic.png" data-index="{{slIndex}}" />
+                    </view>
+                      
+                </view>
+                <!-- 例子  显示图片 结束 -->
+                <!-- 提交表单按钮 -->
+                <!-- <button wx:if="{{images.length >= 1}}" class="weui-btn" type="primary" bindtap="updatePicture">提交</button> -->
+            </view>
+        </view>
+        <!-- 两个按钮 -->
+        <view class="buttons">
+            <view bindtap="goBack" class="button1">取消</view>
+            <view bindtap="affirmOrders" class="button2">确认接单</view>
+        </view>
+    </view>
+    <!-- 物料详情  已接单 -->
+    <view class="content" wx:if="{{type == '已接单' || !type }}">
+        <view class="mater_content" wx:for="{{songliaoDetail}}" wx:key="idx" wx:for-item="sld" wx:for-index="slIndex">
+            <view class="mater_content_top">
+                <view class="mater_content_top_info">
+                    <text class="mct_info_title" wx:if="{{sld.code || sld.name}}">
+                        <text>{{sld.code}}</text>
+                        <text wx:if="{{sld.name}}">（{{sld.name}}）</text>
+                    </text>
+                    <text class="mct_info_title" wx:else>物料编号</text>
+                    <!-- <text>下单时间：{{sld.deliverdate}}</text> -->
+                    <view>
+                        <text>下单时间：{{sld.confirmdate ? sld.confirmdate : ''}}</text>
+                        <text class="jiedanshijain"> 接单时间：{{jdTime ? jdTime : ''}} </text>
+                        <!-- <text class="jiedanshijain"> 接单时间：{{sld.SignInDate ? sld.SignInDate : ''}} </text> -->
+                    </view>
+                    <view>
+                        <text class="mbjq">要求货期：{{sld.Deliverdate ? sld.Deliverdate : ''}}</text>
+                        <text class="yjjq"> 预计交期：{{sld.FQDeliverdate ? sld.FQDeliverdate : ''}} </text>
+                    </view>
+                    <view>
+                        <text class="wenzi">需方色号/颜色：</text>
+                        <text> {{sld.colorid ? sld.colorid : ''}}/{{sld.color ? sld.color : ''}} </text>
+                    </view>
+                    <view>
+                        <text class="wenzi">供方色号/颜色：</text>
+                        <text> {{sld.ProvColorID ? sld.ProvColorID : ''}}/{{sld.ProvColor ? sld.ProvColor : ''}} </text>
+                    </view>
+                    <view>
+                        <text class="wenzi">规格：</text>
+                        <text>{{sld.model ? sld.model : ''}}</text>
+                    </view>
+                    <view>
+                        <text class="wenzi">克重：</text>
+                        <text>{{sld.FGWeight ? sld.FGWeight : ''}}</text>
+                    </view>
+                    <view>
+                        <text class="wenzi">数量：</text>
+                        <text>{{sld.multqty ? sld.multqty : ''}} </text>
+                        <text>{{sld.multunit ? sld.multunit : ''}} </text>
+                    </view>
+                    <view>
+                        <text class="wenzi">单价</text>
+                        <text class="danwei">(元)：</text>
+                        <text class="mbjq">{{sld.multprice ? sld.multprice : ''}}</text>
+                    </view>
+                    <view>
+                        <text class="wenzi">金额</text>
+                        <text class="danwei">(元)：</text>
+                        <text class="mbjq">{{sld.multtotal ? sld.multtotal : ''}}</text>
+                    </view>
+                    <view>
+                        <text class="wenzi">款号：</text>
+                        <text style="word-break: break-all;">{{sld.bb ? sld.bb : ''}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="mater_content_bottom">
+                <view class="mater_content_bottom_remarks" bindtap="openBModel" data-index="{{slIndex}}">
+                    <text class="wenzi">备注：</text>
+                    <text>{{des ? des : (sld.des ? sld.des : '')}}</text>
+                    <text class="arrow"></text>
+                </view>
+                <image class="push_avada" src="{{sld.picture ? sld.picture : defaultImage}}" />
+                <!-- 添加图片 -->
+                <text class="wenzi"  wx:if="{{images.length < 2}}">上传图片附件，限定2张</text>
+                <!-- 例子  显示图片  开始 -->
+                <view class="question-images">
+                    <view wx:for="{{images}}" wx:key="*this">
+                        <view class="q-image-wrap">
+                            <!-- 图片缩略图 -->
+                            <image class="q-image" src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview"></image>
+                            <!-- 移除图片的按钮 -->
+                            <view class="q-image-remover" data-idx="{{index}}" bindtap="removeImage">
+                                删除
+                            </view>
+                        </view>
+                    </view>
+                    <!-- 添加图片 -->
+                    <view style="margin-top: -24rpx;">
+                        <image class="push_addpic" wx:if="{{images.length < 2}}" bindtap="chooseImage" src="../../images/qdn/addPic.png" data-index="{{slIndex}}" />
+                    </view>
+                      
+                </view>
+                <!-- 例子  显示图片 结束 -->
+                <!-- 提交表单按钮 -->
+                <!-- <button wx:if="{{images.length >= 1}}" class="weui-btn" type="primary" bindtap="updatePicture">提交</button> -->
+            </view>
+        </view>
+        <!-- 两个按钮 -->
+        <view class="buttons">
+            <view bindtap="goBack" class="button1">取消</view>
+            <view bindtap="updateAllPicture" class="button2">上传图片</view>
+        </view>
+    </view>
+    <!-- 物料详情  已作废 -->
+    <view class="content" wx:if="{{type  == '已作废' }}">
+        <view class="mater_content" wx:for="{{songliaoDetail}}" wx:key="idx" wx:for-item="sld" wx:for-index="slIndex">
+            <view class="mater_content_top">
+                <view class="mater_content_top_info">
+                    <text class="mct_info_title" wx:if="{{sld.code || sld.name}}">
+                        <text>{{sld.code}}</text>
+                        <text wx:if="{{sld.name}}">（{{sld.name}}）</text>
+                    </text>
+                    <text class="mct_info_title" wx:else>物料编号</text>
+                    <!-- <text>下单时间：{{sld.deliverdate}}</text> -->
+                    <text>下单时间：{{sld.offerDays ? sld.offerDays : ''}}</text>
+                    <view>
+                        <text class="mbjq">要求货期：{{sld.Deliverdate ? sld.Deliverdate : ''}}</text>
+                        <text class="yjjq"> 预计交期：{{sld.FQDeliverdate ? sld.FQDeliverdate : ''}} </text>
+                    </view>
+                    <view>
+                        <text class="wenzi">需方色号/颜色：</text>
+                        <text> {{sld.colorid ? sld.colorid : ''}}/{{sld.color ? sld.color : ''}}</text>
+                    </view>
+                    <view>
+                        <text class="wenzi">供方色号/颜色：</text>
+                        <text> {{sld.ProvColorID ? sld.ProvColorID : ''}}/{{sld.ProvColor ? sld.ProvColor : ''}}</text>
+                    </view>
+                    <view>
+                        <text class="wenzi">规格：</text>
+                        <text>{{sld.model ? sld.model : ''}}</text>
+                    </view>
+                    <view>
+                        <text class="wenzi">克重：</text>
+                        <text>{{sld.FGWeight ? sld.FGWeight : ''}} </text>
+                    </view>
+                    <view>
+                        <text class="wenzi">数量：</text>
+                        <text>{{sld.multqty ? sld.multqty : ''}} </text>
+                        <text>{{sld.multunit ? sld.multunit : ''}} </text>
+                    </view>
+                    <view>
+                        <text class="wenzi">单价</text>
+                        <text class="danwei">(元)：</text>
+                        <text class="mbjq">{{sld.multprice ? sld.multprice : ''}}</text>
+                    </view>
+                    <view>
+                        <text class="wenzi">金额</text>
+                        <text class="danwei">(元)：</text>
+                        <text class="mbjq">{{sld.multtotal ? sld.multtotal : ''}}</text>
+                    </view>
+                    <view>
+                        <text class="wenzi">款号：</text>
+                        <text style="word-break: break-all;">{{sld.bb ? sld.bb : ''}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="mater_content_bottom">
+                <view class="mater_content_bottom_remarks" data-index="{{slIndex}}">
+                    <text class="wenzi">备注：</text>
+                    <text>{{ des ? des : (sld.des ? sld.des : '')}}</text>
+                    <text class="arrow"></text>
+                </view>
+                <image class="push_avada" src="{{sld.picture ? sld.picture : defaultImage}}" />
+                <!-- 添加图片 -->
+                <image class="push_addpic" wx:if="{{images.length < 5}}" src="../../images/qdn/addPic.png" />
+                <text class="wenzi">上传图片附件，限定2张</text>
+            </view>
+        </view>
+    </view>
+    <!-- 回货前需批色 弹框 -->
+    <view hidden="{{!openBModal}}">
+        <view class="cover-layerB" bindtap="closeBModal"></view>
+        <view class="spec-modelB" animation="{{animationDataB}}">
+            <icon type="cancel" color="gray" size="22" class="modal-closeB" bindtap="closeBModal" />
+            <view class="juanhaoB">
+                <view>
+                    <view class="">备注:</view>
+                    <textarea bindblur="bindTextAreaBlur" placeholder="请输入备注" model:value="{{des}}" />
+                </view>
+            </view>
+            <view class="spec-cart-btnsB">
+                <view class="spec-cart-btn1B " data-action='add' bindtap="updateDes">确定</view>
+                <view class="spec-cart-btn2B " data-action='buy' bindtap="closeBModal">取消</view>
+            </view>
+        </view>
+    </view>
+</view>

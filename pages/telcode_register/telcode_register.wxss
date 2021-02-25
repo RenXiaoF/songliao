@@ -1,0 +1,93 @@
+/* pages/telcode_register/telcode_register.wxss */
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+  padding: 30rpx;
+  /* background-color: #fff; */
+  margin-top: 15vh;
+}
+
+/* 手机号 */
+.label-input {
+  font-size: 28rpx;
+  width: 680rpx;
+  line-height: 90rpx;
+  border-bottom: 1rpx #d7d7d7 solid;
+}
+
+.label {
+  box-sizing: border-box;
+  float: left;
+  padding: 0 25rpx;
+}
+.input {
+  box-sizing: border-box;
+  float: left;
+  height: 90rpx;
+  width: 500rpx;
+  padding-right: 5rpx;
+}
+/* 验证码 */
+.verify-box {
+  font-size: 28rpx;
+  width: 680rpx;
+  line-height: 90rpx;
+  margin-bottom: 10vh;
+  position: relative;
+  top: 2vh;
+}
+.verify-input {
+  box-sizing: border-box;
+  float: left;
+  height: 90rpx;
+  width: 400rpx;
+  padding-left: 20rpx;
+  border-bottom: 1rpx #d7d7d7 solid;
+}
+.verify-btn {
+  box-sizing: border-box;
+  float: right;
+  line-height: 90rpx;
+  padding: 0 70rpx;
+  background-color: #3880ff;
+  color: white;
+  border-radius: 10rpx;
+  position: absolute;
+  right: 2vw;
+  width: 42%;
+}
+
+.verify-btn1 {
+  box-sizing: border-box;
+  float: right;
+  line-height: 90rpx;
+  padding: 0 70rpx;
+  background-color: rgb(86, 87, 88);
+  color: white;
+  border-radius: 0.5em;
+  position: absolute;
+  right: 2vw;
+  width: 42%;
+}
+
+/* 注册并登陆 */
+.login-btn {
+  line-height: 70rpx;
+  text-align: center;
+  font-size: 35rpx;
+  color: #fff;
+  background-color: #3880ff;
+  border-radius: 0.2rem;
+  margin-top: 3vh;
+}
+
+.hetong {
+  font-size: 25rpx;
+  margin-top: 3vh;
+  margin-left: 63vw;
+}

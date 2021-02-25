@@ -1,0 +1,127 @@
+<!-- 企业入驻 -->
+<!-- <text>pages/push-msg/push-msg.wxml</text> -->
+<view class="content">
+    <!-- 内容 supplierstatus==1||supplierstatus==2 -->
+    <view class="push_content" wx:if="{{supplierstatus==1||supplierstatus==2}}">
+        <view class="push_text">
+            <view class="text">
+                <text class="label">公司名称:</text>
+                <input class="input4" type="text" name="store_name" disabled="true" value="{{entryinfo.store_name}}" />
+            </view>
+            <view class="text">
+                <text class="label">品牌或简称:</text>
+                <input class="input4" type="text" name="sc_name" disabled="true" value="{{entryinfo.sc_name}}" />
+            </view>
+            <view class="text">
+                <text class="label">联系手机:</text>
+                <input class="input4" type="number" name="store_phone" disabled="true" value="{{entryinfo.store_phone}}" />
+            </view>
+            <view class="text1">
+                <text class="label">角色(多选):</text>
+
+                    <text class="input1" wx:for="{{entryinfo.user_role}}" wx:key="index" wx:for-item="role">
+                        {{role.role}}
+                    </text>
+
+                <image class="bianji1" bindtap='group_modalinput' src="../../images/bianji.png" />
+            </view>
+            <view class="text">
+                <text class="label">纳税人识别码:</text>
+                <text class="input4">{{entryinfo.taxpayerid}}</text>
+                <image class="bianji" bindtap='taxpayerid_modalinput' src="../../images/bianji.png" />
+            </view>
+            <view class="text">
+                <text class="">业务经理:</text>
+                <text class="input4">{{entryinfo.first_header}}</text>
+                <image class="bianji" bindtap='goOpManager' value="{{first_header}}" src="../../images/bianji.png" />
+            </view>
+            <view class="text">
+                <text class="label">上级企业:</text>
+                <text class="input4">{{entryinfo.leader_store_name?entryinfo.leader_store_name:'无'}}</text>
+                <image class="bianji" bindtap='goLeaderStore' src="../../images/bianji.png" />
+            </view>
+        </view>
+        <!-- 按钮 -->
+        <view class="content_button4" bindtap="again" wx:if="{{supplierstatus==1}}">重新入驻</view>
+        <view class="content_button4" wx:if="{{supplierstatus==2}}">审核中</view>
+        <view class="content_button6" bindtap="goBack">返回</view>
+    </view>
+    <!-- 内容 supplierstatus==0 -->
+    <form bindsubmit="submit" wx:if="{{supplierstatus==0}}">
+        <view class="push_content">
+            <view class="push_text">
+                <view class="text">
+                    <text class="label">公司名称:</text>
+                    <input placeholder="请输入公司名称" class="input" type="text" name="store_name" bindinput="onInputComponyName" value="{{inputComponyName}}"  />
+                </view>
+                <view class="text">
+                    <text class="label">品牌或简称:</text>
+                    <input placeholder="请输入品牌或简称" class="input" type="text" name="sc_name" bindinput="onInputBrandName" value="{{inputBrandName}}" />
+                </view>
+                <view class="text">
+                    <text class="label">联系手机:</text>
+                    <input placeholder="请输入手机号" class="input" type="number" name="store_phone" value="{{account.store_phone}}" />
+                </view>
+                <view class="text1">
+                    <text class="label">角色(多选):</text>
+                    <text class="input1" wx:for="{{account.user_role}}" wx:key="index" wx:for-item="role">
+                        {{role.role}}
+                    </text>
+                    <image class="bianji1" bindtap='empty_group_modalinput' src="../../images/bianji.png" />
+                </view>
+                <view class="text">
+                    <text class="label">纳税人识别码:</text>
+                    <input placeholder="请输入纳税人识别码" class="input" type="text" name="taxpayerid" bindinput="onInputTaxpayerIDCode" value="{{inputTaxpayerIDCode}}" />
+                </view>
+                <view class="text">
+                    <text class="label">业务经理:</text>
+                    <text class="input2">{{account.first_header}}</text>
+                    <image class="bianji" bindtap='goOpManager' src="../../images/bianji.png" />
+                </view>
+                <view class="text">
+                    <text class="label">上级企业:</text>
+                    <text class="input">{{account.leader_store_name?account.leader_store_name:'无'}}</text>
+                    <image class="bianji" bindtap='goLeaderStore' src="../../images/bianji.png" />
+                </view>
+            </view>
+        </view>
+        <view class="notes">
+            <text class="xinghao">*</text>
+            <text class="zhiyi">请您准确填写资料供我司审核</text>
+        </view>
+        <button class="content_button" style="width:80vw;margin-left:9vw" formType="submit">
+            提交申请
+        </button>
+        <view class="content_button3" bindtap="goBack">返回</view>
+    </form>
+</view>
+<!-- 修改 纳税人识别码 -->
+<modal hidden="{{taxpayerid_hiddenmodalput}}" title="修改纳税识别码" confirm-text="确定" cancel-text="取消" bindcancel="taxpayerid_cancel" bindconfirm="taxpayerid_confirm">
+    <input type='text' class="modal-box-input border" bindfocus="bindFous" placeholder="请填写纳税识别码" value="{{realname}}" bindinput="setChangetaxpayerid" value="{{temp_taxpayerid}}" auto-focus />
+</modal>
+<!-- 修改 角色待审核或者已入住 -->
+<modal wx:if="{{supplierstatus!=0}}" hidden="{{group_hiddenmodalput}}" title="修改角色" confirm-text="确定" cancel-text="取消" bindcancel="group_cancel" bindconfirm="group_confirm">
+    <view class="page__bd">
+        <view class="section section_gap">
+            <checkbox-group bindchange="setGroup" class="radio-group">
+                <label class="radio" wx:for="{{account.role_list}}" wx:key="index" wx:for-item="item">
+                    <checkbox value="{{item.id}}" checked="{{item.checked}}" />
+                    {{item.role}}
+                </label>
+            </checkbox-group>
+        </view>
+    </view>
+</modal>
+<!-- 修改 角色未入住 -->
+<modal wx:if="{{supplierstatus==0}}" hidden="{{empty_group_hiddenmodalput}}" title="修改角色" confirm-text="确定" cancel-text="取消" bindcancel="empty_group_cancel" bindconfirm="empty_group_confirm">
+    <view class="page__bd">
+        <view class="section section_gap">
+            <checkbox-group bindchange="setGroup" class="radio-group">
+                <label class="radio" wx:for="{{account.role_list}}" wx:key="index" wx:for-item="item">
+                    <checkbox value="{{item.id}}" checked="{{item.checked}}" />
+                    {{item.role}}
+                </label>
+            </checkbox-group>
+        </view>
+    </view>
+</modal>

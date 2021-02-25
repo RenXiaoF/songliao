@@ -1,0 +1,42 @@
+/* pages/logins/relation_guide/relation_guide.wxss */
+.local{
+    padding-bottom: 30rpx;
+}
+.relation-des{
+    font-size:24rpx;
+    line-height: 60rpx;
+    color: #999;
+}
+.co-black{
+    color: #333;
+}
+.user-photo1-h{
+    width: 150rpx;
+    height: 150rpx;
+    margin:24rpx auto 0;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.ueser-name1-h>span{
+    vertical-align: top;
+    color: #333;
+    margin-left:18rpx;
+}
+.p-t-48{
+    padding-top:48rpx;
+}
+.relation-btns{
+    display: block;
+    height:78rpx;
+    line-height:78rpx;
+    text-align: center;
+    font-size:28rpx;
+    color: #666;
+    border:1px solid #ccc;
+    border-radius:6rpx;
+}
+.register-btns{
+    background-color: #f23030;
+    color: #fff;
+    border-color:#f23030;
+}

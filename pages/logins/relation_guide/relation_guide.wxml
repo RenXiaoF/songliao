@@ -1,0 +1,11 @@
+<!--关联账户-->
+<!-- <text>pages/logins/relation_guide/relation_guide.wxml</text> -->
+<view class="pd-bg-fff local">
+    <view class="user-photo1-h"> <image class="wh100" src="{{wechatUser.avatarUrl}}"></image> </view>
+    <view class="relation-des ueser-name1-h">亲爱的微信用户:<text>{{wechatUser.nickName}}</text></view>
+    <view class="relation-des co-black">为了给您更好的服务，请关联一个本商城账号</view>
+    <view class="relation-des p-t-48">还没有TPshop商城账号？</view>
+    <navigator class="relation-btns register-btns" url='/pages/telcode_register/telcode_register?type=register'>账号</navigator>
+    <view class="relation-des p-t-48">已TPshop商城账号？</view>
+    <navigator class="relation-btns" url='/pages/logins/register/register?type=relate'>立即关联</navigator>
+</view>

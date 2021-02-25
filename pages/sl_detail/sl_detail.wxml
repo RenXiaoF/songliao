@@ -1,0 +1,167 @@
+<view class="content">
+  <!-- 单号 -->
+  <view class="company_name">
+    <text class="company_t">采购单号：{{Matioid}}</text>
+    <text class="">共{{songliaoDetail.length}}条</text>
+  </view>
+
+  <!-- 物料详情 -->
+  <view class="mater_content" wx:for="{{songliaoDetail}}" wx:key="idx" wx:for-item="sld"  wx:for-index="slIndex">
+    <view class="mater_content_top">
+      <view class="mater_content_top_info">
+        <text class="mct_info_title" wx:if="{{sld.code || sld.name}}">
+          <text>{{sld.code}}</text>
+          <text wx:if="{{sld.name}}">（{{sld.name}}）</text>
+        </text>
+        <text class="mct_info_title" wx:else>无物料编号</text>
+        <view>
+           <text class="wenzi">采购耗时：</text>
+           <text class="mct_info_time">{{sld.offerDays ? sld.offerDays : 0 }}天</text>
+        </view>
+        <view>
+            <text class="wenzi">要求货期：</text>
+            <text>{{sld.Deliverdate ? sld.Deliverdate : '' }}</text>
+        </view>
+        <view>
+          <text class="wenzi">需方色号/颜色：</text>
+          <text>{{sld.ColorID ? sld.ColorID : '' }}/{{sld.color ? sld.color : '' }}</text>
+        </view>
+        <view>
+          <text class="wenzi">供方色号/颜色：</text>
+          <text>{{sld.ProvColorID ? sld.ProvColorID : '' }}/{{sld.ProvColor ? sld.ProvColor : '' }}</text>
+        </view>
+        <view>
+          <text class="wenzi">规格：</text>
+          <text>{{sld.model ? sld.model : '' }}</text>
+        </view>
+        <view>
+          <text class="wenzi">克重：</text>
+          <text>{{sld.FGWeight ? sld.FGWeight : 0 }} </text>
+        </view>
+        <view style="color:#07A4E9;font-weight: bold;" bindtap="openBModel" data-index="{{slIndex}}" data-sld="{{sld}}">
+          <text class="">总送料数：</text>
+          <text>{{sld.multqty ? sld.multqty : '' }} </text>
+          <text>{{sld.multunit ? sld.multunit : '' }} </text>
+          <text> > </text>
+        </view>
+        <view>
+          <text class="wenzi">单价</text>
+          <text class="danwei">(元)：</text>
+          <text>{{sld.multprice ? sld.multprice : 0 }} </text>
+        </view>
+        <view>
+          <text class="wenzi">金额</text>
+          <text class="danwei">(元)：</text>
+          <text>{{sld.multtotal ? sld.multtotal : 0 }} </text>
+        </view>
+        <view>
+          <text class="wenzi">款号：</text>
+          <text style="word-break: break-all;">{{sld.bb ? sld.bb : '' }}</text>
+        </view>
+      </view>
+    </view>
+    <view class="mater_content_bottom">
+      <image class="push_avada" src="{{sld.picture?sld.picture:defaultImage}}" />
+    </view>
+  </view>
+</view>
+
+<!-- 回货前需批色 弹框 -->
+<view hidden="{{!openBModal}}">
+  <view class="cover-layerB" bindtap="closeBModal"></view>
+  <view class="spec-modelB" animation="{{animationDataB}}">
+    <icon type="cancel" color="gray" size="22" class="modal-closeB" bindtap="closeBModal" />
+     
+    <view class="">
+        <!-- 单号 -->
+        <view class="tankuang_top" >
+          <view class="" style="color:#07A4E9;font-weight: bold;">
+            <text class="">{{code}}（{{Name}}）</text>
+          </view>
+          <view class="">
+            <text class="wenzi">采购单：</text>
+            <text class="">{{Matioid ? Matioid : ''}}</text>
+          </view>
+          <view class="">
+            <text class="wenzi">供方色号/颜色：</text>
+            <text class="">{{provcolorid ? provcolorid : '' }}/{{provcolor ? provcolor : '' }}</text>
+          </view>
+          <view class="">
+            <text class="wenzi">需方色号/颜色：</text>
+            <text class="">{{Colorid ? Colorid : '' }}/{{color ? color : '' }}</text>
+          </view>
+          <view class="">
+            <text class="wenzi">规格：</text>
+            <text class="">{{model ? model : '' }}</text>
+          </view>
+          <view class="">
+            <text class="wenzi">克重：</text>
+            <text class="">{{FGWeight ? FGWeight : '' }}</text>
+          </view>
+          <view class="">
+            <text class="wenzi">总送料数：</text>
+            <!-- <text class="">{{fjCount}} 米</text> -->
+            <text class="">{{multqty ? multqty : 0}} {{multunit ? multunit : ''}}</text>
+          </view>
+        </view>
+        <view class="hdqy">
+          <view class="sljl">
+            <text class="wenzi">送料记录：</text>
+            <text class="" style="color:red;font-weight: bold;">共{{getTanKuangIngo.length ? getTanKuangIngo.length : 0}}单 - 共{{fjCount ? fjCount : 0}}米</text>
+          </view>
+          <scroll-view  scroll-y="true" style="height:62vh">
+            <!-- 物料详情 -->
+            <view class="mater_content" wx:for="{{getTanKuangIngo}}" wx:key="idx" wx:for-item="sld"  wx:for-index="slIndex">
+              <view class="mater_content_top1">
+                <view class="mater_content_top_info1">
+                  <view style=" font-weight: 600;">
+                    <text class="">送料单：</text>
+                    <text class="">{{sld.deliveryID ? sld.deliveryID : '' }}</text>
+                    <text class="" wx:if="{{sld.state}}" style="color:white;background-color:red">{{sld.state ? sld.state : '' }}</text>
+                  </view>
+                  <view>
+                      <text class="wenzi">送料时间：</text>
+                      <text>{{sld.sendDate ? sld.sendDate : '' }}</text>
+                  </view>
+                  <view>
+                    <text class="wenzi">目标交期：</text>
+                    <text>{{sld.requiredate ? sld.requiredate : '' }}</text>
+                  </view>
+                  <view>
+                    <text class="wenzi">送料数：</text>
+                    <text>{{sld.sendqty ? sld.sendqty : 0 }}{{multunit ? multunit : ''}}</text>
+                  </view>
+                  <view>
+                    <text class="wenzi">批次：</text>
+                    <text>{{sld.Batchno ? sld.Batchno : 0 }}</text>
+                  </view>
+                  <view>
+                    <text class="wenzi">卷数：</text>
+                    <text>{{sld.rollCount ? sld.rollCount : 0 }} 卷</text>
+                  </view>
+                  <view style="color:#07A4E9;font-weight: bold;" bindtap="list"   data-index="{{slIndex}}" data-deliveryid="{{sld.deliveryID}}" data-batchno="{{sld.Batchno}}" data-code="{{code}}" data-colorid="{{Colorid}}">
+                    <text wx:if="{{ross_list[slIndex].status != true && true}}">分卷明细：</text>
+                    <text bindtap="fenJuanInfo2" data-index="{{slIndex}}" data-status="{{ross_list[slIndex].status}}" wx:if="{{ross_list[slIndex].status != true && true}}"> v </text>
+                    </view>
+                    <view style="color:#07A4E9;font-weight: bold;"  >
+                        <text wx:if="{{ross_list[slIndex].status == true}}" bindtap="fenJuanInfo2" data-index="{{slIndex}}" data-status="{{ross_list[slIndex].status}}">分卷明细：</text>
+                        <text wx:if="{{ross_list[slIndex].status == true}}" bindtap="fenJuanInfo2" data-index="{{slIndex}}" data-status="{{ross_list[slIndex].status}}"> ^ </text>
+                    </view>
+                    <view wx:if="{{ross_list[slIndex].status == true}}" style="color:#666;" wx:for="{{ross_list[slIndex].list}}" wx:key="icx" wx:for-item="fj">
+                      <view>
+                        <text class="">卷号</text>
+                        <text wx:if="{{fj.num}}" class="">{{fj.num}}:</text>
+                        <text wx:if="{{fj.count}}" class="">{{fj.count}}</text>
+                      </view>
+                    </view>
+                    </view>
+                  </view>
+            </view> 
+          </scroll-view>
+                 
+        </view>
+          
+    </view>
+     
+  </view>
+</view>

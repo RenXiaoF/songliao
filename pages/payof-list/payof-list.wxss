@@ -1,0 +1,285 @@
+/* new */
+page {
+  background: #edf0f7;
+}
+.container {
+  background-color: #edf0f7;
+  width: 100%;
+  font-size: 28rpx;
+}
+.title {
+  display: flex;
+  justify-content: space-between;
+  padding: 10rpx 40rpx;
+  background: white;
+}
+.title .title_right {
+  display: flex;
+  align-content: center;
+}
+.title .title_right checkbox {
+  margin-left: 10rpx;
+}
+/* 未选中的 背景样式 */
+checkbox .wx-checkbox-input {
+  border-radius: 10rpx; /* 圆角 */
+  width: 40rpx; /* 背景的宽 */
+  height: 40rpx; /* 背景的高 */
+  box-sizing: border-box;
+}
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  border: 1rpx solid #1d9dfe;
+  background: #1d9dfe;
+  width: 40rpx; /* 背景的宽 */
+  height: 40rpx; /* 背景的高 */
+  box-sizing: border-box;
+}
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  border-radius: 10rpx; /* 圆角 */
+  width: 40rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+  height: 40rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+  line-height: 40rpx;
+  text-align: center;
+  font-size: 30rpx; /*对勾大小 30rpx */
+  color: #fff; /* 对勾颜色 白色 */
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}
+
+.materiel_list {
+  width: 95%;
+  margin: 30rpx auto 0;
+  margin-bottom: 3rem;
+}
+.materiel_item {
+  display: flex;
+  background: white;
+  padding: 28rpx 18rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+  border-radius: 10rpx;
+}
+.materiel_item .materiel_img {
+  width: 30%;
+  margin-right: 20rpx;
+  display: flex;
+  align-items: center;
+}
+.materiel_img image {
+  width: 100%;
+  height: 100%;
+  border-radius: 20rpx;
+}
+.materiel_item .materiel_desc {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+.materiel_item .materiel_editBox {
+  width: 10%;
+  display: flex;
+}
+.changeNum {
+  position: absolute;
+  bottom: 28rpx;
+  right: 60rpx;
+  color: #b5b5b5;
+}
+.changeNum .arrow {
+  margin-top: 6rpx;
+  right: -30rpx;
+}
+.bottom_button {
+  position: fixed;
+  bottom: 10rpx;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.bottom_button button {
+  width: 34%;
+  background-color: #1c9cff;
+  color: white;
+  font-size: 33rpx;
+  text-align: center;
+  /* 圆角 */
+  /* -webkit-border-radius: 5em;
+  -moz-border-radius: 5em;
+  border-radius: 5em; */
+}
+
+/* 规格弹框 */
+.spec-model {
+  position: fixed;
+  bottom: 0;
+  z-index: 20;
+  background: white;
+  /* width: 99.5%; */
+  padding: 0 30rpx;
+  font-size: 32rpx;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  border: 1rpx solid #ccc;
+  border-radius: 20rpx;
+}
+.modal-close {
+  float: right;
+  margin-top: 10rpx;
+}
+.spec-name {
+  clear: both;
+  padding: 20rpx 0;
+  font-size: 30rpx;
+}
+.tankuang_y {
+  /* position: relative;
+  top: -4.8vh;
+  left: 15vh; */
+  font-size: 25rpx;
+  color: red;
+  margin-left: 3vw;
+}
+.count {
+  float: left;
+  width: 95%;
+  height: 50rpx;
+  border: 1rpx solid #f8f8f8;
+  font-size: 28rpx;
+}
+.count > view {
+  float: left;
+  width: 15%;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+}
+.count > input {
+  float: left;
+  width: 75%;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border: 1rpx solid #ccc;
+  /* 圆角 */
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+}
+.sub {
+  /* border-right: 1px solid #ddd; */
+  font-size: 40rpx;
+  font-weight: 800;
+}
+.add {
+  /* border-left: 1px solid #ddd; */
+  font-size: 40rpx;
+  font-weight: 800;
+}
+/* 是否分卷 */
+.is_fenjuan {
+  float: left;
+  width: 95%;
+  height: 50rpx;
+  font-size: 28rpx;
+  margin-top: 2vh;
+}
+.is_fenjuan > view > view {
+  float: left;
+  width: 23%;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+}
+.is_fenjuan > view > switch {
+  float: left;
+  width: 20%;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.is_fenjuan > view > input {
+  float: left;
+  width: 20%;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border: 1rpx solid #ccc;
+  /* 圆角 */
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+}
+.is_fenjuan .isSwitchChecked {
+  color: #ccc;
+  border: 1rpx solid #ccc !important;
+}
+
+/* 卷号_new */
+.juanhao_new {
+  width: 95%;
+  font-size: 28rpx;
+  border: 1rpx solid #ccc;
+  float: left;
+  margin-top: 2vh;
+  padding: 2vh 2vw;
+  border-radius: 0.5em;
+}
+.juanhao_new_item,
+.juanhao_new_item .juanhao_new_item_left,
+.juanhao_new_item .juanhao_new_item_right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.juanhao_new_item_left {
+  width: 30%;
+}
+.juanhao_new_item_left input {
+  width: 100%;
+  border: 1rpx solid #ccc;
+  border-radius: 0.5em;
+  text-align: center;
+  color: black;
+}
+.juanhao_new_item_right {
+  width: 60%;
+}
+.juanhao_new_item_right input {
+  width: 100%;
+  border: 1rpx solid #ccc;
+  border-radius: 0.5em;
+  text-align: center;
+}
+.spec-cart-btns {
+  margin: 40rpx -30rpx 0;
+  padding: 20rpx 34rpx;
+  float: left;
+  width: 100%;
+  line-height: 80rpx;
+}
+.spec-cart-btn1 {
+  float: left;
+  background-color: #02a7f0;
+  width: 251rpx;
+  font-size: 30rpx;
+  text-align: center;
+  color: white;
+  border-radius: 2em;
+  margin-right: 10vw;
+  margin-left: 6vw;
+
+  /* margin-left: 1vw;
+  padding: 0 1vw;
+  width: auto; */
+}
+.spec-cart-btn2 {
+  float: left;
+  background-color: #02a7f0;
+  width: 251rpx;
+  font-size: 30rpx;
+  text-align: center;
+  color: white;
+  border-radius: 2em;
+}

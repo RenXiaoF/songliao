@@ -1,0 +1,296 @@
+<!-- 订单管理 -->
+<!-- <text>pages/order_management/order_management.wxml</text> -->
+<view class="content">
+    <view></view>
+    <!-- 默认时间 -->
+    <view class="default_time">
+        <view class="time_start">
+            <picker mode="date" value="{{date}}" bindchange="changeDate">
+                <view class="tui-picker-detail">{{date}}</view>
+            </picker>
+        </view>
+        <view class="time_end">
+            <picker mode="date" value="{{date1}}" bindchange="changeDate1">
+                <view class="tui-picker-detail">{{date1}}</view>
+            </picker>
+        </view>
+    </view>
+    <!-- 搜索框 -->
+    <view class="search-box">
+        <view class="search-inner">
+            <SearchBar class="search-cont" id="SearchBar" addflag="{{addflag}}" addimg="{{addimg}}" bind:addhandle="addhandle" searchstr="{{searchstr}}" bind:searchList="searchList" bind:endsearchList="endsearchList" bind:cancelsearch="cancelsearch" bind:activity_clear="activity_clear"></SearchBar>
+        </view>
+    </view>
+    <!-- 待接单  已结单  全部 -->
+    <view class="type-navbar">
+        <view class="type-box" wx:for="{{categories}}" wx:key="index">
+            <view id="{{item.id}}" class="type-navbar-item {{activeCategoryId == item.id ? 'type-item-on' : ''}}" bindtap="tabClick">
+                {{item.name}}({{item.count}})
+            </view>
+        </view>
+    </view>
+    <!-- 公司名称、内容背景 -->
+    <view class="bg_content">
+        <!-- 内容 -->
+        <view class="mater_content" >
+            <!-- 一。 待接单 -->
+            <view class="mater_text" hidden="{{activeCategoryId==0?false:true}}">
+                <view class="content_top" > 
+                    <!-- 公司名称 -->
+                    <text class="company_t_long" wx:if="{{authUserList.length == 1}}">{{title2}}</text>
+                    <text class="company_t" wx:if="{{authUserList.length > 1}}">{{title2}}</text>
+                    <view style="padding-top: 1.5vh;" wx:if="{{authUserList.length > 1}}"> 
+                        <image bindtap='goToSearchStore' class="push_de" src="../../images/nav.png" />
+                        <text bindtap='goToSearchStore' class="push_de1">换一家</text>
+                    </view>
+                    <view class="company_name" >
+                        <text class="company_h">共{{daisongliaocount101 ? daisongliaocount101 : 0 }}单</text>
+                    </view>
+                </view>
+                <view class="jiange" wx:for="{{daisongliaoList101}}" wx:key="idx" wx:for-item="dsll">
+                    <navigator url="/pages/order_management_detail/order_management_detail?type={{dsll.state}}&Matioid={{dsll.Matioid}}&ActType={{dsll.ActType}}&server_ip={{server_ip}}" open-type="navigate">
+                        <view class="push_con">
+                            <view class="push_text">
+                                <view style="color:red;">
+                                    <text class="">要求货期：</text>
+                                    <text>{{dsll.Deliverdate ? dsll.Deliverdate : ''}}</text>
+                                    <text class="shshm">{{dsll.DeliverType ? dsll.DeliverType : ''}}</text>
+                                    <text class="zchcg">{{dsll.POTypeNM ? dsll.POTypeNM  : ''}}</text>
+                                </view>
+                                <view>
+                                    <text class="wenzi">采购单号：</text>
+                                    <text>{{dsll.Matioid ? dsll.Matioid : ''}}</text>
+                                    <!-- <text class="shshm">{{dsll.DeliverType ? dsll.DeliverType : ''}}</text>
+                                    <text class="zchcg">{{dsll.POTypeNM ? dsll.POTypeNM  : ''}}</text> -->
+                                </view>
+                                <view class="push_text_2">
+                                    <text class="wenzi">采购员：</text>
+                                    <text class="">{{dsll.Tabnm ? dsll.Tabnm : ''}}</text>
+                                    <text class="push_tel">{{dsll.Tel ? dsll.Tel : '' }}</text>
+                                    <!-- <image class="push_tel" src="../../images/qdn/phone1.png" /> -->
+                                </view>
+                                <view>
+                                    <text class="wenzi">下单时间：</text>
+                                    <text class="">{{dsll.ConfirmDate  ? dsll.ConfirmDate : ''}}</text>
+                                </view>
+                                <view>
+                                    <text class="wenzi">款       数：</text>
+                                    <text class="">{{dsll.MPSMatIDCount  ? dsll.MPSMatIDCount : 0}}个</text>
+                                </view>
+                                <view>
+                                    <text class="wenzi">物料种数：</text>
+                                    <text class="">{{dsll.MatIDCount  ? dsll.MatIDCount : 0}}种</text>
+                                </view>
+                                <view class="wz_address">
+                                    <text class="wenzi">送货地址：</text>
+                                    <text class="">{{dsll.deliveraddr  ? dsll.deliveraddr : '' }}</text>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="tu_det">
+                            <!-- 默认图片 -->
+                            <view wx:if="{{dsll.state == ''}}">
+                                <image class="push_avada" src="../../images/djd.png" />
+                            </view>
+                            <!-- 已审核 -->
+                            <view wx:if="{{dsll.state == '已审核'}}">
+                                <image class="push_avada" src="../../images/yshh.png" />
+                            </view>
+                            <!-- 已收料 -->
+                            <view wx:if="{{dsll.state == '已收料'}}">
+                                <image class="push_avada" src="../../images/yshl.png" />
+                            </view>
+                            <!-- 已结案 -->
+                            <view wx:if="{{dsll.state == '已结案'}}">
+                                <image class="push_avada" src="../../images/yjiean.png" />
+                            </view>
+                            <!-- 已结案 -->
+                            <view wx:if="{{dsll.state == '已作废'}}">
+                                <image class="push_avada" src="../../images/yzf.png" />
+                            </view>
+                            <!-- 查看详情  -->
+                            <view class="push_detail">
+                                <text class="push_dt">查看详情 </text>
+                                <!-- <image class="push_de" src="../../images/icon-arrowdown.png" /> -->
+                                <text class="arrow" ></text>
+                            </view>
+                        </view>
+                    </navigator>
+                </view>
+            </view>
+            <!-- 二。 已结单 -->
+            <view class="mater_text" hidden="{{activeCategoryId==1?false:true}}">
+                <view class="content_top">
+                    <!-- 公司名称 -->
+
+                    <text class="company_t_long" wx:if="{{authUserList.length == 1}}">{{title2}}</text>
+                    <text class="company_t" wx:if="{{authUserList.length > 1}}">{{title2}}</text>
+                    <view style="padding-top: 1.5vh;" wx:if="{{authUserList.length > 1}}"> 
+                        <image bindtap='goToSearchStore' class="push_de" src="../../images/nav.png" />
+                        <text bindtap='goToSearchStore' class="push_de1">换一家</text>
+                    </view>
+                    <view class="company_name" >
+                        <text class="company_h">共{{songliaocount101 ? songliaocount101 : 0 }}单</text>
+                    </view>
+                </view>
+                <view class="jiange" wx:for="{{songliaoList101}}" wx:key="idx" wx:for-item="sll">
+                    <navigator url="/pages/order_management_detail/order_management_detail?type={{sll.state}}&Matioid={{sll.Matioid}}&ActType={{sll.ActType}}&server_ip={{server_ip}}" open-type="navigate">
+                        <view class="push_con">
+                            <view class="push_text">
+                                <view style="color:red;">
+                                    <text class="">要求货期：</text>
+                                    <text class="">{{sll.Deliverdate  ? sll.Deliverdate : ''}}</text>
+                                </view>
+                                <view>
+                                    <text class="wenzi">采购单号：</text>
+                                    <text>{{sll.Matioid ? sll.Matioid : ''}}</text>
+                                    <text class="shshm" wx:if="{{sll.DeliverType != null}}">{{sll.DeliverType ? sll.DeliverType : ''}}</text>
+                                    <text class="zchcg" wx:if="{{sll.POTypeNM != null}}">{{sll.POTypeNM ? sll.POTypeNM  : ''}}</text>
+                                </view>
+                                <view class="push_text_2">
+                                    <text class="wenzi">采购员：</text>
+                                    <text class="">{{sll.Tabnm ? sll.Tabnm : ''}}</text>
+                                    <text class="push_tel">{{sll.Tel ? sll.Tel : '' }}</text>
+                                    <!-- <image class="push_tel" src="../../images/qdn/phone1.png" /> -->
+                                </view>
+                                <view>
+                                    <text class="wenzi">接单时间：</text>
+                                    <text class="">{{sll.SignInDate  ? sll.SignInDate : ''}}</text>
+                                </view>
+                                <view>
+                                    <text class="wenzi">款       数：</text>
+                                    <text class="">{{sll.MPSMatIDCount  ? sll.MPSMatIDCount : 0}}个</text>
+                                </view>
+                                <view>
+                                    <text class="wenzi">物料种数：</text>
+                                    <text class="">{{sll.MatIDCount  ? sll.MatIDCount : 0}}种</text>
+                                </view>
+                                <view class="wz_address">
+                                    <text class="wenzi">送货地址：</text>
+                                    <text >{{sll.deliveraddr  ? sll.deliveraddr : '' }}</text>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="tu_det">
+                            <!-- 默认图片 -->
+                            <view >
+                                <image class="push_avada" src="../../images/yjd.png" />
+                            </view>
+                            <!-- 已审核 -->
+                            <view wx:if="{{sll.state == '已审核'}}">
+                                <image class="push_avada" src="../../images/yshh.png" />
+                            </view>
+                            <!-- 已收料 -->
+                            <view wx:if="{{sll.state == '已收料'}}">
+                                <image class="push_avada" src="../../images/yshl.png" />
+                            </view>
+                            <!-- 已结案 -->
+                            <view wx:if="{{sll.state == '已结案'}}">
+                                <image class="push_avada" src="../../images/yjiean.png" />
+                            </view>
+                            <!-- 已结案 -->
+                            <view wx:if="{{sll.state == '已作废'}}">
+                                <image class="push_avada" src="../../images/yzf.png" />
+                            </view>
+                            <!-- 查看详情  -->
+                            <view class="push_detail">
+                                <text class="push_dt">查看详情 </text>
+                                <!-- <image class="push_de" src="../../images/icon-arrowdown.png" /> -->
+                                <text class="arrow" ></text> 
+                            </view>
+                        </view>
+                    </navigator>
+                </view>
+            </view>
+            <!-- 三。 全部 -->
+            <view class="mater_text" hidden="{{activeCategoryId==2?false:true}}">
+                <view class="content_top">
+                    <!-- 公司名称 -->
+                     <text class="company_t_long" wx:if="{{authUserList.length == 1}}">{{title2}}</text>
+                    <text class="company_t" wx:if="{{authUserList.length > 1}}">{{title2}}</text>
+                    <view style="padding-top: 1.5vh;" wx:if="{{authUserList.length > 1}}"> 
+                        <image bindtap='goToSearchStore' class="push_de" src="../../images/nav.png" />
+                        <text bindtap='goToSearchStore' class="push_de1">换一家</text>
+                    </view>
+                    <view class="company_name" >
+                        <text class="company_h">共{{tatolListCount ? tatolListCount : 0 }}单</text>
+                    </view>
+                </view>
+                <view class="jiange" wx:for="{{tatolList}}" wx:key="idx" wx:for-item="sll">
+                    <navigator url="/pages/order_management_detail/order_management_detail?type={{sll.state}}&Matioid={{sll.Matioid}}&ActType={{sll.ActType}}&server_ip={{server_ip}}" open-type="navigate">
+                        <view class="push_con">
+                            <view class="push_text">
+                                <view style="color:red;">
+                                    <text class="">要求货期：</text>
+                                    <text class="">{{sll.Deliverdate  ? sll.Deliverdate : ''}}</text>
+                                </view>
+                                <view>
+                                    <text class="wenzi">采购单号：</text>
+                                    <text>{{sll.Matioid ? sll.Matioid : ''}}</text>
+                                    <text class="shshm">{{sll.DeliverType ? sll.DeliverType : ''}}</text>
+                                    <text class="zchcg">{{sll.POTypeNM ? sll.POTypeNM  : ''}}</text>
+                                </view>
+                                <view class="push_text_2">
+                                    <text class="wenzi">采购员：</text>
+                                    <text class="">{{sll.Tabnm ? sll.Tabnm : ''}}</text>
+                                    <text class="push_tel">{{sll.Tel ? sll.Tel : '' }}</text>
+                                    <!-- <image class="push_tel" src="../../images/qdn/phone1.png" /> -->
+                                </view>
+                                <view wx:if="{{sll.state == '已接单'}}">
+                                    <text class="wenzi">接单时间：</text>
+                                    <!-- <text class="">{{jdTime  ? jdTime : ''}}</text> -->
+                                    <text class="">{{sll.SignInDate  ? sll.SignInDate : ''}}</text>
+                                </view>
+                                <view >
+                                    <text class="wenzi" >下单时间：</text>
+                                    <text class="">{{sll.ConfirmDate  ? sll.ConfirmDate : ''}}</text>
+                                </view>
+                                <view>
+                                    <text class="wenzi">款       数：</text>
+                                    <text class="">{{sll.MPSMatIDCount  ? sll.MPSMatIDCount : 0}}个</text>
+                                </view>
+                                <view>
+                                    <text class="wenzi">物料种数：</text>
+                                    <text class="">{{sll.MatIDCount  ? sll.MatIDCount : 0}}种</text>
+                                </view>
+                                <view class="wz_address">
+                                    <text class="wenzi">送货地址：</text>
+                                    <text class="">{{sll.deliveraddr  ? sll.deliveraddr : '' }}</text>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="tu_det">
+                            <!-- 默认图片 -->
+                            <view wx:if="{{sll.state == ''}}">
+                                <image class="push_avada1" src="../../images/yshh.png" />
+                            </view>
+                            <!-- 已审核 -->
+                            <view wx:if="{{sll.state == '待接单'}}">
+                                <image class="push_avada" src="../../images/djd.png" />
+                            </view>
+                            <!-- 已收料 -->
+                            <view wx:if="{{sll.state == '已接单'}}">
+                                <image class="push_avada1" src="../../images/yjd.png" />
+                            </view>
+                            <!-- 已结案 -->
+                            <view wx:if="{{sll.state == '已结案'}}">
+                                <image class="push_avada1" src="../../images/yjiean.png" />
+                            </view>
+                            <!-- 已结案 -->
+                            <view wx:if="{{sll.state == '已作废'}}">
+                                <image class="push_avada1" src="../../images/yzf.png" />
+                            </view>
+                            <!-- 查看详情  -->
+                            <view class="push_detail">
+                                <text class="push_dt">查看详情 </text>
+                                <!-- <image class="push_de" src="../../images/icon-arrowdown.png" /> -->
+                                <text class="arrow"></text>
+                            </view>
+                        </view>
+                    </navigator>
+                </view>
+            </view>
+        </view>
+       
+    </view>
+</view>

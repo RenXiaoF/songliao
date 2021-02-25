@@ -1,0 +1,16 @@
+<!-- 变量step（1~4） -->
+<template name="progress-bar">
+    <view class="progress-bar">
+        <template name="progress">
+            <view class="progress-item">
+                <view class="line {{em?'em-back':''}}"></view>
+                <view class="circle {{em?'em-back':''}}">{{idx}}</view>
+                <view class="title {{em?'em-front':''}}">{{title}}</view>
+            </view>
+        </template>
+        <template data="{{em:step>=1,idx:1,title:'入驻商家信息'}}" is="progress"></template>
+        <template data="{{em:step>=2,idx:2,title:'入驻商家信息'}}" is="progress"></template>
+        <template data="{{em:step>=3,idx:3,title:'入驻商家信息'}}" is="progress"></template>
+        <template data="{{em:step>=4,idx:4,title:'审核/完成'}}" is="progress"></template>
+    </view>
+</template>

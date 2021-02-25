@@ -1,0 +1,90 @@
+/* pages/logins/userinfo/userinfo.wxss */
+.container {
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.user-container {
+  font-size: 30rpx;
+}
+.user_content {
+  width: 100%;
+  background-color: #1c9cff;
+  /* margin-top: 1rpx; */
+  height: 25vh;
+  display: flex;
+}
+.user_headimg {
+  height: 90rpx;
+  width: 90rpx;
+  border-radius: 3em;
+  margin-right: 5vw;
+  margin-top: 5vh;
+  margin-left: 5vw;
+}
+.setting {
+  position: absolute;
+  right: 4vw;
+  top: 3vh;
+  width: 7vw;
+  height: 4vh;
+}
+.tngup {
+  margin-top: 5vh;
+  color: white;
+  font-size: 25rpx;
+
+}
+.user-txt-right {
+  /* float: right;
+  margin-top: 30rpx; */
+  margin-right: 30rpx;
+}
+
+.user-name {
+  width: 100%;
+  height: 100rpx;
+  margin-top: 2rpx;
+  background-color: white;
+  border-bottom: #e7e7e7 1rpx solid;
+}
+.user-name-txt {
+  float: left;
+  margin-left: 40rpx;
+  margin-top: 30rpx;
+}
+
+.user-change {
+  width: 100%;
+  height: 100rpx;
+  margin-top: 20rpx;
+  background-color: white;
+}
+.one-line {
+  white-space: nowrap;
+  word-break: keep-all;
+  overflow: hidden;
+}
+.arrow-right {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 30rpx;
+  float: right;
+  margin-top: 30rpx;
+}
+
+.no-data {
+  width: 100%;
+  text-align: center;
+}
+.no-data .lookat {
+  padding: 16rpx 40rpx;
+  background-color: #0086f6;
+  margin: 10vh 15rpx;
+  border-radius: 10rpx;
+  /* margin-left: 15rpx;
+  margin-right: 15rpx; */
+  color: white;
+}

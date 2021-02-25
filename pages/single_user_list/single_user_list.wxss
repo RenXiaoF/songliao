@@ -1,0 +1,139 @@
+/* pages/single_user_list/single_user_list.wxss */
+
+.content {
+  width: 100%;
+  margin-top: 10%;
+}
+
+.push_content {
+  width: 90%;
+  margin-left: 4vw;
+  /* 圆角 */
+  /* -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em; */
+}
+
+.push_text {
+  width: 100%;
+  color: black;
+  margin-top: 2vh;
+  margin-bottom: 7vh;
+  flex-direction: column;
+  display: flex;
+}
+.text {
+  border-bottom: #c8c7cc solid 1rpx;
+  padding-top: 3vh;
+  padding-bottom: 2vh;
+  padding-left: 4vw;
+  font-size: 25rpx;
+}
+
+.xinghao {
+  color: red;
+}
+.fhvalue {
+  position: absolute;
+  left: 35vw;
+}
+.bianji {
+  width: 60rpx;
+  height: 50rpx;
+  float: right;
+}
+
+.content_button {
+  background-color: #1885d9;
+  width: 74.5vw;
+  font-size: 28rpx;
+  text-align: center;
+  color: white;
+  border-radius: 0.5em;
+  margin-left: 9vw;
+  margin-bottom: 2vh;
+  padding: 1.7vh;
+}
+.modal-box-input {
+  font-size: 28rpx;
+  width: 80%;
+  margin: 20rpx auto;
+  border: 1px solid #dddd;
+  padding: 15rpx 10rpx;
+  border-radius: 10rpx;
+  color: black;
+}
+.modal-box-input2 {
+  font-size: 28rpx;
+  width: 75%;
+  margin: 0rpx auto;
+  border: 1px solid #dddd;
+  padding: 15rpx 10rpx;
+  border-radius: 10rpx;
+  color: black;
+  margin-left: 5vw;
+}
+
+.modal-box-input.border {
+  border: 1px solid #2f94fa;
+  box-shadow: 0 0 3px #2f94f4;
+}
+.modal-box-input2.border {
+  border: 1px solid #2f94fa;
+  box-shadow: 0 0 3px #2f94f4;
+}
+.modal-box-title {
+  color: black;
+}
+.radio-group {
+  border-bottom: 1px solid #ddd;
+}
+.radio {
+  display: block;
+  border-top: 1px solid #ddd;
+  padding: 5px;
+}
+
+/* 验证码 */
+.verify-box {
+  font-size: 28rpx;
+  line-height: 6vh;
+  top: 2vh;
+  display: flex;
+}
+.verify-input {
+  box-sizing: border-box;
+  float: left;
+  height: 90rpx;
+  width: 400rpx;
+  padding-left: 20rpx;
+  border-bottom: 1rpx #d7d7d7 solid;
+}
+.verify-btn {
+  box-sizing: border-box;
+  float: right;
+  line-height: 6vh;
+  padding: 0 55rpx;
+  background-color: #0086f6;
+  color: white;
+  border-radius: 10rpx;
+  width: 45%;
+  padding-left: 7vw;
+}
+
+.no-data {
+  background-color: #1885d9;
+  width: 75vw;
+  font-size: 28rpx;
+  text-align: center;
+  color: white;
+  border-radius: 0.5em;
+  margin-left: 9vw;
+  margin-bottom: 2vh;
+  padding: 1.5vh;
+}
+.no-data .lookat {
+  padding: 0.3vh;
+  /* background-color: #0086f6; */
+  color: white;
+}

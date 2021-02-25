@@ -1,0 +1,38 @@
+<!-- 登陆 -->
+<!-- <text>pages/logins/login/login.wxml</text> -->
+<form bindsubmit="submitForm">
+    <!-- <image class="bc" src="../../../images/qrbg.jpg"  /> -->
+      
+    <view class="container login-wrap">
+        <!-- 手机号 -->
+        <view class="label-input ">
+            <text class="label">+86</text>
+            <input class="input" placeholder="请输入手机号" type="text" name="realname" bindinput="setMobile" />
+        </view>
+  
+        <!-- 密码 -->
+        <view class="simple">
+            <text class="label">密码</text>
+            <input class="input" placeholder="请输入6-16位密码" name="password" password type="text" />
+        </view>
+     
+        <!-- 注册并登陆 -->
+        <button style="width:644rpx" class="login-btn" formType="submit" bindsubmit="submitForm">
+            登  陆
+        </button>
+        <!-- 协议 -->
+        <view class="hetong1" bindtap="goTelCodeRegister">
+            <text style="color:#3880FF">验证码登陆</text>
+        </view>
+        <view class="hetong" bindtap="goRegister">
+            <text style="color:#3880FF">忘记密码？</text>
+        </view>
+        <!-- <view class="hetong">
+            <checkbox checked></checkbox>
+            <text>用户注册即代表同意</text>
+            <text style="color:#00aee6">《用户使用条款》</text>
+            <text>和</text>
+            <text style="color:#00aee6">《隐私政策》</text>
+        </view> -->
+    </view>
+</form>

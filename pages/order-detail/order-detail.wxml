@@ -1,0 +1,157 @@
+<!-- 采购订单详情 -->
+<!-- <text>pages/order-detail/order-detail.wxml</text> -->
+<view class="content">
+  <!-- 单号 -->
+  <view class="company_name">
+    <text class="company_t">采购单号：{{Matioid}}</text>
+    <text class="">共{{songliaoDetail.length}}条</text>
+  </view>
+
+  <!-- 物料详情 -->
+  <view class="mater_content" wx:for="{{songliaoDetail}}" wx:key="idx" wx:for-item="sld" wx:for-index="slIndex">
+    <view class="mater_content_top">
+      <view class="mater_content_top_info">
+        <text class="mct_info_title" wx:if="{{sld.code || sld.name}}">
+          <text>{{sld.code}}</text>
+          <text wx:if="{{sld.name}}">（{{sld.name}}）</text>
+        </text>
+        <text class="mct_info_title" wx:else>无物料编号</text>
+        <view>
+           <text class="wenzi">采购耗时：</text>
+           <text class="mct_info_time">{{sld.offerDays ? sld.offerDays : 0 }}天</text>
+        </view>
+        <view>
+            <text class="wenzi">要求货期：</text>
+            <text>{{sld.Deliverdate ? sld.Deliverdate : '' }}</text>
+        </view>
+        <view>
+          <text class="wenzi">需方色号/颜色：</text>
+          <text>{{sld.colorid ? sld.colorid : '' }}/{{sld.color ? sld.color : '' }}</text>
+        </view>
+        <view>
+          <text class="wenzi">供方色号/颜色：</text>
+          <text>{{sld.ProvColorID ? sld.ProvColorID : '' }}/{{sld.ProvColor ? sld.ProvColor : '' }}</text>
+        </view>
+        <view>
+          <text class="wenzi">规格：</text>
+          <text>{{sld.model ? sld.model : '' }}</text>
+        </view>
+        <view>
+          <text class="wenzi">克重：</text>
+          <text>{{sld.FGWeight ? sld.FGWeight : 0 }} </text>
+        </view>
+        <view>
+          <text class="wenzi">数量：</text>
+          <text>{{sld.multqty ? sld.multqty : 0 }} </text>
+          <text>{{sld.multunit ? sld.multunit : '' }} </text>
+        </view>
+        <view>
+          <text class="wenzi">单价</text>
+          <text class="danwei">(元)：</text>
+          <text>{{sld.multprice ? sld.multprice : 0 }} </text>
+        </view>
+        <view>
+          <text class="wenzi">金额</text>
+          <text class="danwei">(元)：</text>
+          <text>{{sld.multtotal ? sld.multtotal : 0 }} </text>
+        </view>
+        <view>
+          <text class="wenzi">款号：</text>
+          <text style="word-break: break-all;">{{sld.bb ? sld.bb : '' }}</text>
+        </view>
+      </view>
+    </view>
+    <view class="mater_content_bottom">
+      <view class="mater_content_bottom_remarks" bindtap="openBModel" data-index="{{slIndex}}">
+        <text>备注：{{sld.des ? sld.des : ''  }}</text>
+        <text class="arrow"></text>
+      </view>
+      <image class="push_avada" src="{{sld.picture?sld.picture:defaultImage}}" />
+      <view class=" push_dt" bindtap="openSpecModel" data-index="{{slIndex}}" data-sld="{{sld}}"  style="font-weight:bold">去送料</view>
+    </view>
+  </view>
+
+  <!-- 两个按钮 -->
+  <view class="buttons">
+      <view bindtap="onGotoPayoflist" class="button1">送料列表({{count}})</view>
+      <view bindtap="openConfirm" class="button2" >确认送料</view>
+  </view>
+
+  <!-- 规格弹框 -->
+  <view hidden="{{!openSpecModal}}">
+      <view class="cover-layer" bindtap="closeSpecModal"></view>
+      <view class="spec-model" animation="{{animationData}}">
+          <icon type="cancel" color="gray" size="22" class="modal-close" bindtap="closeSpecModal" />
+          <view class="spec-name">请填写送料数</view>
+          <text class="tankuang_y" wx:if="{{getOneSLInfo.length>0}}">(累计已送:共{{TCount}}{{multunit && multunit != 'undefined' ? multunit : ''}},{{getOneSLInfo.length}}卷,最后的卷号:{{lastNum}})</text>
+          <view class="count">
+              <view>批次:</view>
+              <input type="text" value="{{batchno}}" bindblur="inputCartNum" />
+          </view>
+          <!-- 是否分卷 -->
+          <view class="is_fenjuan">
+              <view>
+                  <view class="">是否分卷:</view>
+                  <switch type="switch" checked="{{switchChecked}}" bindchange="switchChange"/>
+              </view>
+              <view>
+                <view>卷数：</view>
+                <view style="width:20%;border:1rpx solid #ccc;border-radius: 0.5em;" class="{{!switchChecked?'isSwitchChecked':''}}" >
+                  <input type="number" bindinput="bindKeyInput" disabled="{{!switchChecked}}" value="{{inputValue}}" />
+                </view>
+              </view>
+          </view>
+          <!-- 卷号_new -->
+
+              <view class="juanhao_new">
+               <scroll-view  scroll-y="true" style="height:17vh">
+                    <block wx:for="{{payOffInfo.list}}" wx:key="*this"  wx:for-index="listIndex">
+                      <view class="juanhao_new_item">
+                        <view class="juanhao_new_item_left">
+                          <view class="">卷号:</view>
+                          <view style="width:40%">
+                            <input type="number" bindblur="inputNum" data-index="{{listIndex}}" value="{{item.num}}"/>
+                          </view>
+                        </view>
+                        <view class="juanhao_new_item_right">
+                          <view>送料数：</view>
+                          <view style="width:40%;">
+                            <input type="digit" value="{{item.count}}" bindblur="inputCount" data-index="{{listIndex}}"/>
+                          </view>
+                          <text class="add" bindtap="addCartNum" data-index="{{listIndex}}" >+</text>
+                          <text class="sub" bindtap="subCartNum" data-index="{{listIndex}}" >-</text>
+                        </view>
+                      </view>
+                    </block>
+                  </scroll-view>
+              </view>
+
+
+          <view class="spec-cart-btns">
+              <view class="spec-cart-btn1 " data-action='add' bindtap="addSongliaoList">加入送料列表</view>
+              <view class="spec-cart-btn2 " data-action='buy' bindtap="printaddCart">打印标签</view>
+          </view>
+      </view>
+  </view>
+
+
+  <!-- 回货前需批色 弹框 -->
+  <view hidden="{{!openBModal}}">
+      <view class="cover-layerB" bindtap="closeBModal"></view>
+      <view class="spec-modelB" animation="{{animationDataB}}">
+          <icon type="cancel" color="gray" size="22" class="modal-closeB" bindtap="closeBModal" />
+
+          <view class="juanhaoB">
+              <view>
+                  <view class="">备注:</view>
+                    <textarea bindblur="bindTextAreaBlur"  placeholder="请输入备注" value="{{des}}" />
+
+              </view>
+          </view>
+          <view class="spec-cart-btnsB">
+              <view class="spec-cart-btn1B " data-action='add' bindtap="updateDes">确定</view>
+              <view class="spec-cart-btn2B " data-action='buy' bindtap="closeBModal">取消</view>
+          </view>
+      </view>
+  </view>
+</view>

@@ -1,0 +1,71 @@
+{
+  "pages": [
+    
+    "pages/index/index",    
+    "pages/logs/logs",
+    "pages/logins/userinfo/userinfo",
+    "pages/single_user_list/single_user_list",
+
+    "pages/push-msg/push-msg",
+
+    "pages/order-list/order-list",
+    "pages/order-detail/order-detail",
+    "pages/payof-list/payof-list",
+
+    "pages/userAuth/index",
+
+    "pages/logins/register/register",
+    "pages/logins/login/login",
+    "pages/logins/relation_guide/relation_guide",
+    
+    "pages/sl_detail/sl_detail",
+
+    "pages/searchbox/searchbox",
+    "pages/search_store/search_store",
+    "pages/my_qrcode/my_qrcode",
+    "pages/telcode_register/telcode_register",
+    "pages/operation_manager/operation_manager",
+    "pages/search_store_list/search_store_list",
+    "pages/yly_user_zhc/yly_user_zhc",
+    "pages/gongsi-organization/gongsi-organization",
+    "pages/depart-officer/depart-officer",
+    "pages/alter-depart/alter-depart",
+
+    "pages/pushed_new_order/pushed_new_order",
+    "pages/order_management/order_management",
+    "pages/order_management_detail/order_management_detail",
+    "pages/my_sllist/my_sllist",
+    "pages/my_sllist_detail/my_sllist_detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "送料通",
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#eeeeee",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#6e6d6b",
+    "selectedColor": "#0088F7",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/Home.png",
+        "selectedIconPath": "images/Home1.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/logins/userinfo/userinfo",
+        "iconPath": "images/nav/user1.png",
+        "selectedIconPath": "images/我的.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "debug": true,
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,36 @@
+<!-- 个人资料 -->
+<!-- <text>pages/logins/userinfo/userinfo.wxml</text> -->
+<view class="container">
+    <view class="user-container">
+        <view class="user_content">
+            <image class="user_headimg" src="{{userData.head_pic ? userData.head_pic  : defaultAvatar}}"></image>
+            <image class="setting" bindtap="gotoPersonalDetail" src="../../../images/icon-setting.png"></image>
+            <view class="tngup">
+                <view class="user-txt-right">姓名：{{userData.realname?userData.realname:'无'}}</view>
+                <view class="user-txt-right">手机号：{{userData.mobile?userData.mobile:'无'}}</view>
+                <view class="user-txt-right">所属企业：{{userData.store_name?userData.store_name:'无'}}</view>
+                <view class="user-txt-right">上级企业：{{userData.leader_store_name == null ? "无": userData.leader_store_name  }}</view>
+            </view>
+        </view>
+        <view class="user-name" data-type="sex" bindtap="gotoRegister">
+            <view class="user-name-txt">用户注册</view>
+            <image class="arrow-right" src="../../../images/icon-arrowdown.png"></image>
+        </view>
+        <view class="user-name" bindtap="gotoEnterprises">
+            <view class="user-name-txt">企业入驻</view>
+            <image class="arrow-right" src="../../../images/icon-arrowdown.png"></image>
+        </view>
+        <view class="user-name" bindtap="gotoPersonalDetail">
+            <view class="user-name-txt">个人信息</view>
+            <image class="arrow-right" src="../../../images/icon-arrowdown.png"></image>
+        </view>
+        <view class="user-name" bindtap="gotoMyQRCode">
+            <view class="user-name-txt">企业二维码</view>
+            <image class="arrow-right" src="../../../images/icon-arrowdown.png"></image>
+        </view>
+    </view>
+    <!-- 安全退出 -->
+    <!-- <view class="no-data" bindtap="clearAuth">
+        <navigator url="/pages/logs/logs" class="lookat" open-type="switchTab">安全退出</navigator>
+    </view> -->
+</view>

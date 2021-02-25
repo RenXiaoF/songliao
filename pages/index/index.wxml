@@ -1,0 +1,75 @@
+<view class="content">
+  <!-- 顶部的背景色 -->
+  <!-- <view class="indextop"></view> -->
+  <!-- swiper 轮播图 -->
+  <block>
+    <swiper class="swiper_box" indicator-dots="true" vertical="" circular="ture" autoplay="true" interval="3000" duration="1000">
+      <view>
+        <swiper-item>
+          <block>
+            <navigator url="/pages/index/index" open-type="redirect">
+              <image src="../../images/swiper1.png" class="slide-image" />
+            </navigator>
+          </block>
+        </swiper-item>
+        <swiper-item>
+          <block>
+            <navigator url="/pages/index/index" open-type="redirect">
+              <image src="../../images/swiper1.png" class="slide-image" />
+            </navigator>
+          </block>
+        </swiper-item>
+        <swiper-item>
+          <block>
+            <navigator url="/pages/index/index" open-type="redirect">
+              <image src="../../images/swiper1.png" class="slide-image" />
+            </navigator>
+          </block>
+        </swiper-item>
+      </view>
+    </swiper>
+  </block>
+   <!-- 订单通知 -->
+    <view class="userinfo" bindtap="bindPushOrder">
+      <block>
+        <image style="width:7.5vw;height:3.5vh;margin: 3vw 3.5vw;" class="userinfo-avatar" src="../../images/xiaoxi.jpg" mode="cover" />
+        <text class="userinfo-nickname">订单</text>
+        <text class="userinfo-nickname1">查看更多</text>
+        <image style="margin-top: 2.1vh;" class="push_de" src="../../images/icon-arrowdown.png" />
+      </block>
+    </view>
+  <!-- 送料管理 -->
+  <view class="userinfo" bindtap="bindViewTap">
+    <block>
+      <image class="userinfo-avatar" src="../../images/slapp1.png" mode="cover" />
+      <text class="userinfo-nickname">送料</text>
+      <text class="userinfo-nickname1">查看更多</text>
+      <image class="push_de" src="../../images/icon-arrowdown.png" />
+    </block>
+  </view>
+
+
+
+  <!-- 我的订单 -->
+  <view class="my_order">
+    <view class="order_title">
+      <image style="width: 7vw;height: 4vh;" class="userinfo-avatar" src="../../images/slapp3.png" mode="cover" />
+      <text class="my_order_text">我的送料</text>
+
+    </view>
+    <view class="border"></view>
+    <view class="roder_k">
+      <!-- 左右滑动 -->
+      <!-- <scroll-view class="" scroll-x="true">
+        <view class="order_image" scroll-x="true"> -->
+          <view class="order_image" wx:for="{{authUserList}}" wx:key="idx" wx:for-item="aul">
+            <navigator class="" url="/pages/my_sllist/my_sllist?server_ip={{aul.server_ip}}&store_name={{aul.store_name}}&providerid={{aul.providerid}}&store_id={{aul.store_id}}" open-type="navigate">
+              <image class="magic-list-img" src="{{aul.store_logo != '' ? aul.store_logo  : defaultImage}} " mode="cover"></image>
+              <text class="ordera_text">{{aul.store_name}}</text>
+            </navigator>
+          </view>
+        <!-- </view>
+      </scroll-view> -->
+    </view>
+  </view>
+</view>

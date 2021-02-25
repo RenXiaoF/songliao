@@ -1,0 +1,13 @@
+<!-- 三种登陆方式 -->
+<view class="content">
+  <image class="bc" src="../../images/qrbg.jpg" />
+  <!--<button style="width:644rpx" class="login-btn" bindtap="gotoLogins">手机号登陆</button>-->
+  <button style="width:644rpx" class="login-btn2" bindtap="gotoCodeLogins">手机号登陆</button>
+  <button style="width:644rpx" class="login-btn1" bindtap="gotoLoginWithWX">微信登陆</button>
+
+</view>
+<!-- <view class="container log-list">
+  <block wx:for="{{logs}}" wx:for-item="log">
+    <text class="log-item">{{index + 1}}. {{log}}</text>
+  </block>
+</view> -->

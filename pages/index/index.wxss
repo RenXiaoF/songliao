@@ -1,0 +1,231 @@
+.content {
+  width: 100%;
+  background-color: #ededed;
+}
+/* 顶部的背景色 */
+.indextop {
+  height: 27vh;
+  background-color: #0486f4;
+}
+/* swiper 轮播图 */
+.swiper_box {
+  position: relative;
+  /* top: -25vh; */
+  /* left: 6vw; */
+  /* margin-left: 4.5vw; */
+  /* margin-right: 2vw; */
+}
+swiper {
+  width: 100%;
+  /* height: calc(100vw * 240 / 214); */
+  height: 30vh;
+}
+.slide-image {
+  width: 100%;
+  /* height: calc(100vw * 240 / 214); */
+  height: 30vh;
+}
+image {
+  /* 圆角 */
+  /* -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em; */
+}
+
+/* 送料管理 */
+.userinfo {
+  width: 94%;
+  flex-direction: column;
+  margin-left: 2vh;
+  margin-bottom: 3vh;
+  position: relative;
+  top: 2vh;
+  background-color: white;
+  border-radius: 0.5em;
+  padding: 0.8rem 0;
+}
+.userinfo-avatar {
+  width: 8vw;
+  height: 4vh;
+  margin: 3vw;
+}
+.userinfo-nickname {
+  color: black;
+  font-weight: bold;
+  /* margin-left: 3vw; */
+  position: relative;
+  top: -3vh;
+}
+
+@media screen and (max-width: 320px) {
+  .userinfo-nickname1 {
+    color: #666;
+    margin-left: 26vw;
+    position: relative;
+    top: -3vh;
+  }
+}
+@media screen and (max-width: 414px) {
+  .userinfo-nickname1 {
+    color: #666;
+    margin-left: 38vw;
+    position: relative;
+    top: -3vh;
+  }
+}
+/* .userinfo-nickname1 {
+  color: #666;
+  margin-left: 34vw;
+  position: relative;
+  top: -3vh;
+} */
+.userinfo-news {
+  color: #666;
+  margin-left: 36vw;
+  position: relative;
+  top: -3vh;
+}
+.push_de {
+  width: 40rpx;
+  height: 30rpx;
+  margin-top: 2.6vh;
+  float: right;
+  margin-right: 4vw;
+  color: #666;
+}
+
+/* 订单通知 */
+.order_num {
+  font-size: 24rpx;
+  position: absolute;
+  /* top: 2vh;
+  left: 8vw; */
+  top: 1vh;
+  left: 8vw;
+  padding-left: 2vw;
+  color: white;
+  width: 57rpx;
+  height: 59rpx;
+  line-height: 58rpx;
+  border-radius: 50%;
+  background-color: rgba(217, 81, 99, 0.9);
+}
+
+.card {
+  background-color: white;
+  width: 95%;
+  border: #666 1rpx solid;
+  /* 圆角 */
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  position: relative;
+  top: -18vh;
+  display: inline-block;
+  margin-left: 3vw;
+  align-items: center;
+  box-shadow: 5px 5px 2px #ababab;
+}
+
+.card_con {
+  width: 100%;
+  /* padding: 0rpx 10rpx 10rpx 10rpx; */
+}
+
+.note {
+  height: 6vh;
+  width: 8vw;
+  position: relative;
+  top: 7vh;
+  left: 5vw;
+}
+.usermotto {
+  margin-left: 20vw;
+}
+.user-motto {
+  color: red;
+  font-size: 22rpx;
+}
+
+/* 我的订单 */
+.my_order {
+  background-color: white;
+  position: relative;
+  top: 1vh;
+  width: 94%;
+  height: 48vh;
+  margin-left: 3vw;
+  align-content: center;
+  /* box-shadow: 5px 5px 2px #ababab;
+  border: #666 1rpx solid; */
+  /* 圆角 */
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+}
+.my_order_text {
+  position: relative;
+  top: -3vh;
+  left: 2vw;
+  font-weight: bold;
+}
+.border {
+  width: 100%;
+  border-bottom: #e7e7e7 1rpx solid;
+  position: relative;
+  top: -2vh;
+}
+.order_title {
+  margin-left: 0vw;
+  margin-bottom: 2vh;
+  margin-top: 2vh;
+  border-bottom: 1px solid #ccc;
+}
+.roder_k {
+  width: 100%;
+  /* width: 65vh; */
+  display: flex;
+  margin-bottom: 5vh;
+  /* justify-content: space-evenly; */
+  flex-flow: row wrap;
+
+}
+.order_image {
+
+  width: 32%;
+  display: flex;
+  display: -webkit-box;
+  flex-direction: column;
+  text-align: center;
+  margin-left: 1vw;
+
+}
+.order_image2 {
+  /* width: 33%;
+  margin-right: 2rpx;
+  margin-left: 2rpx; */
+  width: 30%;
+  text-align: center;
+}
+.magic-list-img {
+  width: 29vw;
+  height: 20vh;
+  /* height: auto; */
+  /* 圆角 */
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  margin-right: 3.5vw;
+}
+.ordera_text {
+  /* margin-left: 4vw; */
+  font-size: 0.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  text-align: center;
+  margin-bottom: 3vh;
+  width: 18vh;
+}

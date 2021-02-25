@@ -1,0 +1,113 @@
+page {
+  background-color: #edf0f7;
+}
+.content {
+  width: 100%;
+  background-color: #edf0f7;
+  font-size: 28rpx;
+  padding-bottom: 100rpx;
+}
+
+.company_name {
+  background-color: white;
+  padding: 2vh 4vw 2vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 内容--new */
+.mater_content {
+  background-color: white;
+  width: 94%;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  padding: 20rpx 0 10rpx;
+  margin: 20rpx auto 0;
+  box-sizing: border-box;
+}
+.mater_content_top {
+  padding: 0 30rpx 0;
+  border-bottom: 1rpx solid #ccc;
+  margin-bottom: 20rpx;
+}
+.mater_content_top_info {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10rpx;
+}
+
+.mct_info_title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1c9cff;
+  line-height: 60rpx;
+}
+.wenzi {
+  color: #666666;
+}
+.danwei {
+  color: #666;
+  font-size: 20rpx;
+}
+.mct_info_time {
+  color: #e45991;
+}
+.mater_content_bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 30rpx 0;
+}
+.mater_content_bottom image {
+  width: 100%;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  margin-bottom: 20rpx;
+  height: 250rpx;
+}
+
+/* 回货前需批色 */
+.spec-modelB {
+  position: fixed;
+  bottom: 0;
+  z-index: 20;
+  background: white;
+  /* width: 99.5%; */
+  padding: 0 30rpx;
+  font-size: 32rpx;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  border: 1rpx solid #F2F2F2;
+  border-radius: 20rpx;
+  width: 96%;
+  margin-left: 2%;
+}
+.modal-closeB {
+  float: right;
+}
+.tankuang_top {
+  padding-left: 2vw;
+  padding-top: 1vh;
+}
+.hdqy {
+  border: 1rpx solid #F2F2F2;
+  border-radius: 0.5em;
+}
+.sljl {
+  padding-top: 2vh;
+  padding-left: 2vw;
+}
+.mater_content_top1 {
+  /* padding: 0 30rpx 0; */
+  border: 1rpx solid #F2F2F2;
+  margin-left: -8px;
+  border-radius: 0.5em;
+}
+.mater_content_top_info1 {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10rpx;
+  padding-left: 1vh;
+}

@@ -1,0 +1,19 @@
+/* pages/userAuth/index.wxss */
+.auth-bt{
+    background-color: #03bd00;
+    width: 80%;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: #fff;
+    margin-top: 2rem;
+  }
+  .auth-v{
+    background-color: #03bd00;
+    color: #fff;
+    font-size: 0.9rem;
+    padding: 5rem 1rem;
+    text-align: center;
+  }
+  .auth-v-t{
+    margin-bottom: 0.5rem;
+  }

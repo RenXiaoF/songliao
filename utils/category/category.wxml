@@ -1,0 +1,20 @@
+<template name="category">
+    <!-- 选择地址弹框  -->
+    <view hidden="{{!data.showCategoryModal}}">
+        <view class="cover-layer" bindtap="closeCategoryModal"></view>
+        <view class="categories">
+            <block wx:if="{{data.currentArea<2}}">
+                <view class="category" wx:for="{{data.categories}}" wx:key="{{index}}" data-id="{{item.id}}" 
+                    data-name="{{item.mobile_name}}" bindtap="openCategoryModal">{{item.mobile_name}}</view>
+            </block>
+            <block wx:if="{{data.currentArea==2}}">
+                <button class="confirm-btn" bindtap="openCategoryModal" data-type='confirm'>确定</button>
+                <checkbox-group bindchange="categoryCheckboxChange">
+                    <view class="category" wx:for="{{data.categories}}" wx:key="{{index}}" data-id="{{item.id}}" data-name="{{item.mobile_name}}">
+                        <checkbox color="#EC5151" value="{{item.id+','+item.mobile_name}}"/>{{item.mobile_name}}
+                    </view>
+                </checkbox-group>
+            </block>
+        </view>
+    </view>
+</template>

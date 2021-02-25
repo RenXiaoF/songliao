@@ -1,0 +1,114 @@
+/* pages/yly_user_zhc/yly_user_zhc.wxss */
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+  padding: 30rpx;
+  /* background-color: #fff; */
+  margin-top: 15vh;
+}
+
+/* 手机号 */
+.label-input {
+  font-size: 28rpx;
+  width: 680rpx;
+  line-height: 90rpx;
+  border-bottom: 1rpx #d7d7d7 solid;
+}
+
+.label {
+  box-sizing: border-box;
+  float: left;
+  padding: 0 25rpx;
+}
+.input {
+  box-sizing: border-box;
+  float: left;
+  height: 90rpx;
+  width: 500rpx;
+  padding-right: 5rpx;
+}
+/* 验证码 */
+.verify-box {
+  font-size: 28rpx;
+  width: 680rpx;
+  line-height: 90rpx;
+  margin-bottom: 10vh;
+  position: relative;
+  top: 2vh;
+}
+.verify-input {
+  box-sizing: border-box;
+  float: left;
+  height: 90rpx;
+  width: 400rpx;
+  padding-left: 20rpx;
+  border-bottom: 1rpx #d7d7d7 solid;
+}
+.verify-btn {
+  box-sizing: border-box;
+  float: right;
+  line-height: 90rpx;
+  padding: 0 70rpx;
+  background-color: #3880FF;
+  color: white;
+  border-radius: .5em;
+  position: absolute;
+  right: 2vw;
+  width: 42%;
+}
+.verify-btn1 {
+  box-sizing: border-box;
+  float: right;
+  line-height: 90rpx;
+  padding: 0 70rpx;
+  background-color: rgb(86, 87, 88);
+  color: white;
+  border-radius: .5em;
+  position: absolute;
+  right: 2vw;
+  width: 42%;
+}
+
+/* 注册并登陆 */
+.login-btn {
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #fff;
+  background-color: #3880FF;
+  border-radius: 0.5rem;
+  margin-top: 3vh;
+}
+
+
+/* 已注册 */
+.content {
+  width: 100%;
+}
+.content_yzhc {
+  text-align: center;
+  margin-top: 55%;
+}
+.login_btn1 {
+  border-radius: 1em;
+  width: 90%;
+  line-height: 46rpx;
+  font-size: 30rpx;
+  background-color: #3880FF;
+  margin-top: 3vh;
+  color: white;
+}
+.login_btn2 {
+  border-radius: 1em;
+  width: 90%;
+  line-height: 46rpx;
+  font-size: 30rpx;
+  background-color: #0cd1e8;
+  margin-top: 3vh;
+  color: white;
+}

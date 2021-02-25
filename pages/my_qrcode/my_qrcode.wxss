@@ -1,0 +1,49 @@
+/* 我的上级二维码 */
+/* pages/my_qrcode/my_qrcode.wxss */
+
+.container {
+  width: 100%;
+}
+.button {
+  font-size: 30rpx;
+  float: right;
+  line-height: 68rpx;
+  text-align: center;
+  margin: 20rpx;
+  background-color: #3880ff;
+  color: white;
+  width: 35vw;
+  border-radius: 0.5em;
+  position: absolute;
+  top: 10vh;
+  left: -7vw;
+}
+
+.one {
+  position: absolute;
+  top: 40%;
+  left: 35%;
+}
+
+/* =========================================*/
+.bc {
+  width: 92%;
+  height: 80vh;
+  margin-left: 4%;
+  margin-top: 6vh;
+  border-radius:5vw;
+}
+.qr {
+  position: absolute;
+  top: 44%;
+  left: 6vw;
+  border-radius: 1em;
+  /* height: 40vh;
+  width: 60vw; */
+}
+.wenzi {
+  position: absolute;
+  top: 88vh;
+  left: 27vw;
+  color: red;
+}
